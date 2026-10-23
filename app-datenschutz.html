@@ -5,55 +5,43 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SchutzEngel – Datenschutzerklärung der App</title>
 <meta name="description" content="Datenschutzerklärung für die App SchutzEngel.">
-<!-- Solange die Erklärung nicht vollständig ist, nicht von Suchmaschinen erfassen lassen. Diese Zeile vor der Veröffentlichung entfernen. -->
+<!-- Vor der Veröffentlichung der App die nächste Zeile (noindex) entfernen, wenn die Seite in Suchmaschinen erscheinen soll. -->
 <meta name="robots" content="noindex, nofollow">
 <style>
   :root {
-    --bg: #fcf9f8;
-    --surface: #ffffff;
-    --text: #1b1c1c;
-    --muted: #5b5d5c;
-    --line: #e5e2e1;
-    --accent: #006e1c;
-    --accent-dark: #003c0b;
-    --note-bg: #fff7e0;
-    --note-text: #4a3800;
+    --bg: #fcf9f8; --surface: #ffffff; --text: #1b1c1c; --muted: #5b5d5c;
+    --line: #e5e2e1; --accent: #006e1c; --accent-dark: #003c0b; --head-bg: #f0edec;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #141515;
-      --surface: #1d1f1f;
-      --text: #ecebea;
-      --muted: #a9acab;
-      --line: #333636;
-      --accent: #6fdc84;
-      --accent-dark: #a6f0b4;
-      --note-bg: #3a2f10;
-      --note-text: #ffe9a8;
+      --bg: #141515; --surface: #1d1f1f; --text: #ecebea; --muted: #a9acab;
+      --line: #333636; --accent: #6fdc84; --accent-dark: #a6f0b4; --head-bg: #262929;
     }
   }
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; }
   body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--text);
+    margin: 0; background: var(--bg); color: var(--text);
     font-family: 'Atkinson Hyperlegible Next', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-    font-size: 18px;
-    line-height: 1.65;
+    font-size: 18px; line-height: 1.65;
   }
-  .wrap { max-width: 760px; margin: 0 auto; padding: 24px 16px 64px; }
+  .wrap { max-width: 820px; margin: 0 auto; padding: 24px 16px 64px; }
   header.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
   header.top a { color: var(--accent); font-weight: 700; text-decoration: none; }
   header.top a:hover, header.top a:focus { text-decoration: underline; }
   h1 { font-size: 2rem; line-height: 1.2; margin: 32px 0 8px; color: var(--accent-dark); }
-  h2 { font-size: 1.3rem; line-height: 1.3; margin: 40px 0 8px; color: var(--accent-dark); }
-  p { margin: 0 0 16px; }
+  h2 { font-size: 1.35rem; line-height: 1.3; margin: 40px 0 8px; color: var(--accent-dark); }
+  p, ul, ol { margin: 0 0 16px; }
+  ul, ol { padding-left: 1.3em; }
+  li { margin-bottom: 6px; }
   .stand { color: var(--muted); font-size: 0.95rem; margin-bottom: 24px; }
-  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 20px; margin: 16px 0; }
-  .note { background: var(--note-bg); color: var(--note-text); border-radius: 12px; padding: 14px 18px; margin: 16px 0; font-size: 0.95rem; }
-  a { color: var(--accent); }
-  address { font-style: normal; }
+  a { color: var(--accent); overflow-wrap: anywhere; }
+  .tablewrap { overflow-x: auto; margin: 16px 0 24px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+  table { border-collapse: collapse; min-width: 640px; width: 100%; font-size: 0.88rem; line-height: 1.5; }
+  th, td { border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); padding: 8px 10px; vertical-align: top; text-align: left; }
+  th:last-child, td:last-child { border-right: 0; }
+  tr:last-child td { border-bottom: 0; }
+  thead th { background: var(--head-bg); font-weight: 700; }
   footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.95rem; }
   :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 </style>
@@ -62,39 +50,262 @@
 <div class="wrap">
   <header class="top">
     <a href="/">← SchutzEngel</a>
-    <span class="stand" style="margin:0">Datenschutz der App</span>
   </header>
 
   <main>
-    <h1>Datenschutzerklärung für die App „SchutzEngel“</h1>
-    <p class="stand">Stand: 23. Oktober 2026</p>
-
-    <h2>1. Wer ist verantwortlich?</h2>
-    <div class="card">
-      <address>
-        Moritz Kurscheid<br>
-        Venusbergweg 34<br>
-        53115 Bonn, Deutschland<br>
-        E-Mail: <a href="mailto:schutzengel-app@gmx.de">schutzengel-app@gmx.de</a>
-      </address>
-    </div>
-    <p>Einen Datenschutzbeauftragten haben wir nicht benannt, weil das derzeit gesetzlich nicht erforderlich ist. Fragen zum Datenschutz beantworten wir unter der oben genannten E-Mail-Adresse.</p>
-
-    <h2>2. Die Datenschutzerklärung der App</h2>
-    <div class="note" role="note">
-      <strong>Hinweis zum Entwurf:</strong> Hier wird die vollständige Datenschutzerklärung der App eingefügt (Rollen „Senior“ und „Familie“, Pairing, Berechtigungen, Abo, Firestore u. a.). Dieser Abschnitt ist noch ein Platzhalter.
-    </div>
-
-    <h2>3. Hosting dieser Seite und Server-Logfiles</h2>
-    <p>Diese Seite wird über GitHub Pages ausgeliefert, einen Dienst der GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA.</p>
-    <p>Beim Aufruf verarbeitet GitHub technisch notwendige Daten: Ihre IP-Adresse, Datum und Uhrzeit, die aufgerufene Seite sowie Browser- und Geräteinformationen. Nach Angaben von GitHub wird die IP-Adresse zu Sicherheitszwecken gespeichert. Wir haben auf diese Protokolle keinen Zugriff und keinen Einfluss auf ihre Speicherdauer. Eine feste Frist veröffentlicht GitHub nicht. Die Daten werden nur so lange gespeichert, wie es für die Sicherheit erforderlich ist; die genaue Dauer legt GitHub fest.</p>
-    <p><strong>Zweck und Rechtsgrundlage:</strong> Wir wollen die Seite sicher und stabil bereitstellen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse).</p>
-    <!-- Zertifizierung von GitHub, Inc. am 23.10.2026 auf dataprivacyframework.gov als aktiver Teilnehmer geprüft (Angabe von Moritz). Vor dem Release erneut prüfen. -->
-    <p><strong>Übermittlung in die USA:</strong> Dabei können Daten in die USA gelangen. GitHub, Inc. ist unter dem EU-US Data Privacy Framework zertifiziert. Die Übermittlung stützt sich daher auf den Angemessenheitsbeschluss der EU-Kommission vom 10. Juli 2023. Hilfsweise gelten Standardvertragsklauseln.</p>
-    <p>Wenn Sie nicht möchten, dass Ihre IP-Adresse an GitHub übermittelt wird, schreiben Sie uns an <a href="mailto:schutzengel-app@gmx.de">schutzengel-app@gmx.de</a>. Wir senden Ihnen diese Erklärung dann per E-Mail zu.</p>
-
-    <h2>4. Kontakt</h2>
-    <p>Bei Fragen zum Datenschutz oder zur Ausübung Ihrer Rechte schreiben Sie uns an <a href="mailto:schutzengel-app@gmx.de">schutzengel-app@gmx.de</a>.</p>
+<h1>Datenschutzerklärung für die App „SchutzEngel“</h1>
+<p class="stand">Stand: 23. Oktober 2026 · Version 1.0</p>
+<h2>Kurz gesagt</h2>
+<ul>
+<li>Es gibt <strong>eine App</strong>, „SchutzEngel“, mit zwei Rollen: <strong>Senior</strong> für die ältere Person und <strong>Familie</strong> für Angehörige. Verbunden werden immer zwei Handys: Auf dem einen läuft die App in der Rolle „Senior“, auf dem anderen in der Rolle „Familie“.</li>
+<li>Wir brauchen <strong>keinen Namen und keine E-Mail-Adresse</strong>, damit die App in der Rolle „Senior“ funktioniert. Die App legt ein Konto mit einer zufälligen Nummer an.</li>
+<li><strong>Ihren Standort sehen Ihre Angehörigen nur, wenn Sie das in der Rolle „Senior“ erlauben.</strong> Sie können das jederzeit ausschalten. Dann löschen wir ihn sofort.</li>
+<li>Das <strong>Codewort</strong> wird auf Ihrem Gerät verschlüsselt. Im normalen Betrieb können wir es nicht lesen.</li>
+<li>Ihre <strong>Kontakte</strong> verlassen Ihr Gerät nicht.</li>
+<li><strong>Keine Werbung</strong>, keine Werbe-ID, kein Verkauf von Daten.</li>
+<li><strong>Absturzberichte</strong> senden wir nur, wenn Sie zustimmen.</li>
+<li>Ihre Daten liegen bei <strong>Google (Firebase)</strong> und <strong>Apple</strong>. Ein Teil wird in den <strong>USA</strong> verarbeitet.</li>
+<li>Sie können Ihr <strong>Konto selbst löschen</strong> und sich bei der <strong>Datenschutzbehörde beschweren</strong>.</li>
+<li>In der Rolle „Familie“ sehen die ältere Person <strong>und alle verbundenen Familienmitglieder</strong> Ihren Namen und, wenn Sie sie angeben, Ihre Telefonnummer und Ihren Gruppennamen.</li>
+</ul>
+<h2>1. Wer wir sind</h2>
+<p>Verantwortlich im Sinne der Datenschutz-Grundverordnung (DSGVO) ist:</p>
+<p>Moritz Kurscheid<br />
+Venusbergweg 34<br />
+53115 Bonn, Deutschland<br />
+E-Mail: <a href="mailto:schutzengel-app@gmx.de">schutzengel-app@gmx.de</a></p>
+<p>Einen Datenschutzbeauftragten haben wir nicht benannt, weil wir dazu nach unserer Prüfung nicht verpflichtet sind. Datenschutzfragen richten Sie an <a href="mailto:schutzengel-app@gmx.de">schutzengel-app@gmx.de</a>.</p>
+<p>Die Erklärung gilt für die iOS-App „SchutzEngel“ mit ihren zwei Rollen „Senior“ und „Familie“, die Anruferkennung in der Rolle „Senior“ und die Server, mit denen die App spricht. Die App dürfen nur <strong>Volljährige</strong> nutzen.</p>
+<p><strong>Ihr Widerspruchsrecht.</strong> Soweit wir Daten auf unser berechtigtes Interesse stützen (Art. 6 Abs. 1 lit. f DSGVO), können Sie jederzeit aus Gründen, die sich aus Ihrer besonderen Situation ergeben, widersprechen. Das betrifft die mit „berechtigtes Interesse“ gekennzeichneten Zeilen der Tabelle in Abschnitt 2. Schreiben Sie uns an <a href="mailto:schutzengel-app@gmx.de">schutzengel-app@gmx.de</a>. Wir beenden die Verarbeitung dann, es sei denn, wir weisen zwingende schutzwürdige Gründe nach oder sie dient der Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen.</p>
+<h2>2. Welche Daten wir wozu nutzen</h2>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Tabelle, seitlich scrollbar"><table>
+<thead>
+<tr>
+<th>Daten</th>
+<th>Wozu</th>
+<th>Rechtsgrundlage</th>
+<th>Wie lange</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Zufällige Nutzerkennung, Rolle (Senior/Familie), Zeitpunkt der letzten Verbindung der App zu unserem Server</td>
+<td>Konto, Zuordnung der Daten, Erkennen inaktiver Konten</td>
+<td>Vertrag (lit. b); letzte Verbindung: berechtigtes Interesse (lit. f)</td>
+<td>bis zur Löschung des Kontos (Abschnitt 5)</td>
+</tr>
+<tr>
+<td>Name der älteren Person (freiwillig)</td>
+<td>Anzeige bei verbundenen Familienmitgliedern, wenn die ältere Person „Name zeigen“ für diese Person einschaltet</td>
+<td>Einwilligung (lit. a)</td>
+<td>bis zur Löschung des Kontos oder des Namens; nicht sichtbar, solange pausiert oder ausgeschaltet</td>
+</tr>
+<tr>
+<td>Anzeigename eines Familienmitglieds (Pflicht für die Verbindung)</td>
+<td>Verbindung; Anzeige bei der älteren Person (Vertrag) und bei den anderen Familienmitgliedern (berechtigtes Interesse: alle sollen erkennen, wer verbunden ist, damit auffällt, wenn sich eine unbekannte Person verbunden hat)</td>
+<td>Vertrag (lit. b); berechtigtes Interesse (lit. f)</td>
+<td>bis zur Löschung des Kontos oder zur Trennung</td>
+</tr>
+<tr>
+<td>Telefonnummer, Gruppenname eines Familienmitglieds (freiwillig)</td>
+<td>Anruferkennung; Anzeige bei der älteren Person und den anderen Familienmitgliedern</td>
+<td>Einwilligung (lit. a)</td>
+<td>bis Sie die Angaben löschen, zur Trennung oder zur Löschung des Kontos</td>
+</tr>
+<tr>
+<td>Verbindung Senior–Familie, Kopplungscode</td>
+<td>Verbinden, Alarme, Codewort-Schlüssel</td>
+<td>Vertrag (lit. b)</td>
+<td>Code: 10 Minuten gültig, dann Löschung in der Regel binnen 24 Stunden, spätestens nach 7 Tagen. Verbindung: bis zur Trennung oder Kontolöschung</td>
+</tr>
+<tr>
+<td>Verschlüsseltes Codewort, verpackte Schlüssel</td>
+<td>Familien-Codewort</td>
+<td>Vertrag (lit. b)</td>
+<td>bis zur Löschung des Kontos, Überschreiben bei Änderung</td>
+</tr>
+<tr>
+<td>Standort (nur letzter Stand, kein Verlauf)</td>
+<td>Anzeige für verbundene Familienmitglieder</td>
+<td>Einwilligung (lit. a)</td>
+<td>bis zum nächsten Stand oder zum Ausschalten; ein Stand älter als 7 Tage wird nicht mehr angezeigt und gelöscht</td>
+</tr>
+<tr>
+<td>Lernstand der Übung (nur Zählwerte, nur als Serverkopie für die Familie)</td>
+<td>Anzeige bei verbundenen Familienmitgliedern, wenn die ältere Person „Lernstand zeigen“ einschaltet</td>
+<td>Einwilligung (lit. a)</td>
+<td>solange mindestens ein Familienmitglied ihn sehen darf; älter als 7 Tage wird gelöscht</td>
+</tr>
+<tr>
+<td>Einwilligungsnachweis (Zeitpunkt, Fassung dieser Erklärung, Umfang, handelnde Person)</td>
+<td>Nachweis Ihrer Einwilligungen in Verbindung, Standort und Angaben der Familienmitglieder</td>
+<td>rechtliche Pflicht (lit. c i. V. m. Art. 7 Abs. 1); danach berechtigtes Interesse an Rechtsverteidigung (lit. f)</td>
+<td>bis zum Ende der Verarbeitung und danach bis zum Ende des dritten Kalenderjahres, das auf das Jahr folgt, in dem sie endet</td>
+</tr>
+<tr>
+<td>Push-Token (beide Rollen)</td>
+<td>Alarme und Benachrichtigungen zustellen</td>
+<td>Vertrag (lit. b)</td>
+<td>bis zur Löschung des Kontos oder neuem Token</td>
+</tr>
+<tr>
+<td>Alarmprotokoll (wer, wann, welche Art)</td>
+<td>Nachvollziehbarkeit, Schutz vor Missbrauch</td>
+<td>berechtigtes Interesse (lit. f)</td>
+<td>90 Tage</td>
+</tr>
+<tr>
+<td>Zähler gegen Missbrauch (pseudonymisierter Wert aus IP-Adresse oder Nutzerkennung), Wiederholungsprotokoll</td>
+<td>Schutz vor Erraten von Codes und Alarm-Missbrauch, keine doppelte Ausführung</td>
+<td>berechtigtes Interesse (lit. f)</td>
+<td>höchstens 24 Stunden gültig, Löschung in der Regel binnen 24 Stunden danach, spätestens nach 7 Tagen</td>
+</tr>
+<tr>
+<td>Server-Protokolle: unser eigenes (Anfragekennung, Route, Ergebnis, Dauer, gekürzter Hashwert der Nutzerkennung) und das der Google-Plattform (zusätzlich IP-Adresse und Zeit)</td>
+<td>Betrieb, Fehlersuche, Abwehr von Angriffen</td>
+<td>berechtigtes Interesse (lit. f)</td>
+<td>eigenes Protokoll 30 Tage; Plattformprotokoll 7 Tage, Region Frankfurt (europe-west3)</td>
+</tr>
+<tr>
+<td>Technische Verbindungsdaten bei Google und Apple (IP-Adresse, Installations-ID, Gerätemodell, iOS- und App-Version, Echtheitsnachweis der App)</td>
+<td>Anmeldung, Datenbank, Benachrichtigungen, Schutz vor gefälschten Apps</td>
+<td>Vertrag (lit. b), Sicherheit: berechtigtes Interesse (lit. f)</td>
+<td>bei Google: Anmelde-IP einige Wochen, Installations-ID bis zur Löschung oder 270 Tage ohne Nutzung, nach Kontolöschung höchstens 180 Tage in Sicherungen; Apple: nach eigenen Regeln</td>
+</tr>
+<tr>
+<td>Absturzberichte und Sitzungsangaben (Crashlytics), <strong>nur mit Ihrer Zustimmung</strong></td>
+<td>Fehler beheben</td>
+<td>Einwilligung (lit. a, § 25 Abs. 1 TDDDG)</td>
+<td>90 Tage, danach bis zu 180 Tage bis zur vollständigen Entfernung bei Google</td>
+</tr>
+<tr>
+<td>Abo-Angaben von Apple (Transaktionskennung, Abo, Zeitpunkte, Preis, Land des App Stores)</td>
+<td>Rolle „Familie“ freischalten, Vertragsabwicklung</td>
+<td>Vertrag (lit. b); Aufbewahrung: rechtliche Pflicht (lit. c)</td>
+<td>solange das Abo besteht, danach 6 bis 8 Jahre je nach Unterlage</td>
+</tr>
+<tr>
+<td>E-Mail-Adresse (beim Abo), Widerrufs- und Kündigungserklärung, Kontoverbindung bei Erstattung</td>
+<td>Vertragsmitteilungen, Abwicklung</td>
+<td>Vertrag (lit. b), rechtliche Pflicht (lit. c)</td>
+<td>bis Vertragsende; Rechnungen und Buchungsbelege 8 Jahre, Vertragsbestätigungen und Geschäftsbriefe 6 Jahre ab Ende des Kalenderjahres (§ 147 AO); die Frist läuft nicht ab, solange die Unterlagen für laufende Steuerfestsetzungen wichtig sind</td>
+</tr>
+<tr>
+<td>Anfragen an uns, Prüfangaben zur Identitätsprüfung, Vermerk über Datenschutzanfragen</td>
+<td>Antworten, Schutz vor Missbrauch, Nachweis</td>
+<td>Vertrag (lit. b), berechtigtes Interesse (lit. f), rechtliche Pflicht (lit. c)</td>
+<td>bis zur Erledigung; Prüfangaben 30 Tage danach; Vermerk 3 Jahre</td>
+</tr>
+<tr>
+<td>Missbrauchsmeldung, Prüfergebnis, Sperrvermerk (Kennung, Anlass, Zeitpunkt, Maßnahme)</td>
+<td>Schutz der älteren Person vor heimlicher Überwachung und Druck, Nutzungsbedingungen durchsetzen</td>
+<td>berechtigtes Interesse (lit. f)</td>
+<td>bis zum Abschluss der Prüfung; bei Sperre 3 Jahre nach Ende der Sperre</td>
+</tr>
+<tr>
+<td>Gemeldete Rufnummer, Rolle des angeblichen Anrufers, freiwilliger Text, Tag der Meldung (<strong>ohne</strong> Namen, Nutzerkennung, Gerätekennung, IP-Adresse)</td>
+<td>Sammeln für eine spätere Auswertung von Betrugsmaschen</td>
+<td>berechtigtes Interesse (lit. f)</td>
+<td>365 Tage ab Meldung, danach Prüfung und Löschung nach Bestätigung des Betreibers</td>
+</tr>
+</tbody>
+</table></div>
+<p>Eine automatisierte Entscheidung mit rechtlicher Wirkung für Sie (Art. 22 DSGVO) treffen wir nicht.</p>
+<h2>3. Wer was sieht</h2>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Tabelle, seitlich scrollbar"><table>
+<thead>
+<tr>
+<th></th>
+<th>Ältere Person</th>
+<th>Verbundenes Familienmitglied</th>
+<th>Andere Familienmitglieder</th>
+<th>Wir</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name der älteren Person (nur bei eingeschaltetem Schalter und nicht pausiert)</td>
+<td>ja</td>
+<td>ja</td>
+<td>ja</td>
+<td>ja</td>
+</tr>
+<tr>
+<td>Standort (nur nach Freigabe und nicht pausiert)</td>
+<td>ja</td>
+<td>ja</td>
+<td>ja</td>
+<td>technisch möglich</td>
+</tr>
+<tr>
+<td>Lernstand (nur bei eingeschaltetem Schalter und nicht pausiert)</td>
+<td>ja</td>
+<td>ja</td>
+<td>ja</td>
+<td>soweit ein Familienmitglied ihn sehen darf</td>
+</tr>
+<tr>
+<td>Codewort (Klartext)</td>
+<td>ja</td>
+<td>ja, nach Entsperren</td>
+<td>ja, nach Entsperren</td>
+<td><strong>nein (im Normalbetrieb)</strong></td>
+</tr>
+<tr>
+<td>Name, Telefonnummer, Gruppenname eines Familienmitglieds</td>
+<td>ja</td>
+<td>ja</td>
+<td><strong>ja, alle Verbundenen</strong></td>
+<td>ja</td>
+</tr>
+<tr>
+<td>Wer wann einen Alarm ausgelöst hat</td>
+<td>ja</td>
+<td>nur eigene</td>
+<td>nein</td>
+<td>ja</td>
+</tr>
+<tr>
+<td>Adressbuch-Kontakte der älteren Person</td>
+<td>ja</td>
+<td>nein</td>
+<td>nein</td>
+<td><strong>nein</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Familienmitglieder nutzen die Daten, die sie sehen, in der Regel für rein persönliche oder familiäre Zwecke. Für die Bereitstellung der App und die Verarbeitung auf unseren Servern bleiben wir verantwortlich. Die Rolle „Familie“ darf <strong>nicht</strong> genutzt werden, um eine Person heimlich oder ohne ihre Einwilligung zu überwachen.</p>
+<h2>4. Was Sie wissen sollten</h2>
+<p><strong>Verbindung und Einwilligung.</strong> Die ältere Person erzeugt in der Rolle „Senior“ einen neunstelligen Code. Beim Erzeugen entscheidet sie mit getrennten Schaltern, ob die Person ihren <strong>Namen</strong> und ihren <strong>Lernstand</strong> sieht; beide Schalter sind zunächst aus. Wir speichern, wann, in welcher Fassung dieser Erklärung und mit welchem Umfang zugestimmt wurde. Unter „Profil“ › „Familie“ kann die ältere Person die Freigabe für jedes Familienmitglied jederzeit <strong>sofort pausieren</strong> oder das Familienmitglied <strong>entfernen</strong>. Name, Lernstand und Standort sind dann sofort weg. Alarme und Codewort-Zugriff enden aus Sicherheitsgründen erst nach 24 Stunden (Schutz davor, dass Betrüger am Telefon zum Kappen der Familie drängen); in dieser Zeit kann das Entfernen zurückgenommen werden, und die anderen Familienmitglieder werden benachrichtigt. Ein Familienmitglied kann seine Verbindung jederzeit selbst beenden. Geladene Kopien auf dem Gerät des Familienmitglieds löscht die App dort beim Pausieren und Trennen.</p>
+<p><strong>Codewort.</strong> Es wird auf dem Gerät der älteren Person verschlüsselt und für jedes verbundene Familiengerät gesondert verpackt. Auf unseren Servern liegen nur verschlüsselter Text und verpackte Schlüssel. Wir haben im Normalbetrieb keinen Schlüssel und können das Codewort weder lesen noch wiederherstellen. In der Rolle „Familie“ zeigt die App es erst nach Face ID, Touch ID oder Gerätecode. Biometrische Daten erhalten wir nicht.</p>
+<p><strong>Standort.</strong> Er ist freiwillig, nur in der Rolle „Senior“ einstellbar und darf nicht zur Bedingung für die Nutzung gemacht werden. Der Standort wird auch im Hintergrund aktualisiert; iOS zeigt das an. Die App zeigt dauerhaft an, dass der Standort geteilt wird. Ausschalten (oder Entzug in den iOS-Einstellungen) löscht den gespeicherten Standort sofort. Hat die ältere Person ihr Gerät nicht mehr, genügt eine E-Mail an <a href="mailto:schutzengel-app@gmx.de">schutzengel-app@gmx.de</a>. Meldet sich die App längere Zeit nicht, löschen wir den Standort nach 7 Tagen. In der Rolle „Familie“ zeigt die App den Standort erst nach Tippen auf „Karte von Apple laden“ auf einer Karte von Apple. Dabei erfährt Apple den Kartenausschnitt, also ungefähr den Ort, und die IP-Adresse des Familiengeräts. Apple verarbeitet das in eigener Verantwortung.</p>
+<p><strong>Alarm.</strong> Ein Familienmitglied kann auf dem Gerät der älteren Person einen Alarm auslösen. Der Text enthält keinen Namen und keine Telefonnummer. Wir begrenzen die Zahl der Alarme technisch.</p>
+<p><strong>Kontakte, Kamera, Anruferkennung.</strong> In der Rolle „Senior“ liest die App nur die bis zu drei ausgewählten Kontakte, nur auf dem Gerät. In der Rolle „Familie“ scannt die App den Code mit der Kamera, ohne Bild zu speichern. Die Anruferkennung zeigt Namen verbundener Familienmitglieder anhand einer lokalen Datei, ohne Netzverbindung.</p>
+<p><strong>Zugriff auf Ihr Gerät (§ 25 TDDDG).</strong> Ohne Ihre Einwilligung speichert und liest die App nur, was für den gewünschten Dienst unbedingt erforderlich ist (Anmeldekennung, Schlüssel im Schlüsselbund, Einstellungen, Echtheitsprüfung). Standort und Absturzberichte nur mit Ihrer Einwilligung. Kontakte, Kamera und Benachrichtigungen nur nach Ihrer Erlaubnis in iOS.</p>
+<p><strong>Absturzberichte.</strong> Nur mit Zustimmung (jederzeit unter „Profil“ widerrufbar, wirkt ab dem nächsten Start). Ohne Zustimmung sendet die App nichts; bei einem Absturz legt die Software lediglich eine Datei auf dem Gerät an, die nicht gesendet und beim nächsten Start gelöscht wird.</p>
+<p><strong>Gemeldete Rufnummern.</strong> In der Rolle „Senior“ können Sie freiwillig eine Rufnummer melden, von der ein verdächtiger Anruf kam. Wir speichern Nummer, Rolle des angeblichen Anrufers, einen freiwilligen kurzen Text (bitte ohne Namen, Adressen, Kontodaten oder Gesundheitsangaben), Tag der Meldung und Prüfdatum, <strong>nicht</strong> Ihren Namen, Ihre Nutzerkennung, Gerätekennung oder IP-Adresse. Die Meldung ist nicht mit Ihrem Konto verbunden und bleibt deshalb auch nach der Kontolöschung bestehen; wir ordnen sie Ihnen auch auf Anfrage nicht zu (Art. 11 Abs. 2 DSGVO). Technisch lässt sich ein Rückschluss bei sehr wenigen Meldungen nicht ganz ausschließen (Erstellungszeit in der Datenbank, Anfrage Ihres Kontos zur gleichen Zeit); wir nutzen das nicht. Wir sammeln die Meldungen im Moment nur, zeigen sie in der App nicht an und geben sie nicht weiter. Gehört eine gemeldete Nummer Ihnen, schreiben Sie uns; wir prüfen angemessen, ob die Nummer Ihnen gehört, geben Auskunft zu dieser Nummer und löschen die Meldungen dazu, soweit keine gewichtigen Gründe entgegenstehen. Die Nummerninhaber erfahren von der Meldung nicht; wir informieren deshalb allgemein mit dieser Erklärung (Art. 14 Abs. 5 DSGVO).</p>
+<p><strong>Missbrauchsmeldungen.</strong> Erfahren wir von möglichem Missbrauch, etwa durch die Meldung einer älteren Person, verarbeiten wir die dafür nötigen Angaben auch über die Person, auf die sich die Meldung bezieht (Art. 14 DSGVO). Wir informieren sie, außer das würde die meldende Person gefährden.</p>
+<p><strong>Abo.</strong> Das Abo läuft über den App Store. Apple wickelt Zahlung in eigener Verantwortung ab; wir erhalten keine Zahlungsmittel und nicht Ihre Apple-ID. Wir setzen derzeit keinen weiteren Dienstleister für die Abo-Prüfung ein. E-Mails zum Vertrag schicken wir über Brevo (Sendinblue SAS, Paris, Frankreich). Die Daten liegen auf Servern in der EU; mit dem Anbieter besteht ein Auftragsverarbeitungsvertrag nach Art. 28 DSGVO.</p>
+<p><strong>Schutz.</strong> Wir schützen die Daten durch verschlüsselte Übertragung, Ende-zu-Ende-Verschlüsselung des Codeworts, Schlüsselablage im iOS-Schlüsselbund ohne Synchronisierung, Zugriffsregeln der Datenbank, die durchsetzen, was in Abschnitt 3 steht, Prüfung der Echtheit der App, Begrenzung von Anfragen und keine Inhalte in Protokollen.</p>
+<h2>5. Löschung</h2>
+<ul>
+<li><strong>Konto löschen:</strong> In der App unter „Profil“. Nach Ihrer Bestätigung löschen wir sofort Ihre Nutzerkennung, Verbindungen, Profile, Push-Token, Codewort samt Schlüsseln, Standort, Einlöse-Vermerke und Wiederholungsprotokolle. Familienmitglieder sehen von einer älteren Person dann nichts mehr. Alarmprotokolle mit Ihrer Kennung werden spätestens nach 90 Tagen gelöscht. Einwilligungsnachweise bleiben nach der Tabelle bestehen. Das Löschen beendet <strong>kein</strong> Apple-Abo; das kündigen Sie wie in den Nutzungsbedingungen beschrieben. Fühlen Sie sich von einem Familienmitglied bedroht, trennt unser Support die Verbindung schneller (Kontakt: Abschnitt 6).</li>
+<li><strong>Inaktive Konten:</strong> Wir löschen ein Konto, wenn die App 12 Monate keine Verbindung zu unserem Server hatte. Ausnahmen: ein bezahltes Abo läuft, oder mit der älteren Person ist ein Familienmitglied verbunden, dessen App sich in den letzten 12 Monaten gemeldet hat. Ein Familien-Konto ohne Abo löschen wir spätestens 12 Monate nach dem Abo-Ende. Wir informieren Sie vorher mindestens vier Wochen lang in der App, per Benachrichtigung (soweit erlaubt) und, wenn bekannt, per E-Mail; öffnen Sie die App, löschen wir nicht. Wenn Sie die App löschen oder ein neues Gerät einrichten, bleibt das alte Konto bis dahin bestehen; auf Wunsch löscht es unser Support früher.</li>
+<li><strong>Sicherungen:</strong> Google überschreibt Sicherungen innerhalb von 180 Tagen. Bis dahin liegen gelöschte Daten dort, werden aber nicht mehr verwendet; wird aus einer Sicherung wiederhergestellt, löschen wir erneut.</li>
+<li><strong>Auf Ihrem Gerät:</strong> Lokal liegen Einstellungen, Lernstand, Auswahl der Kontakte, Einrichtungsentwurf, Alarmhistorie, Schlüssel und eine Kopie der Angaben verbundener Familienmitglieder (nur im Arbeitsspeicher). Beim Pausieren, Entfernen oder Kontolöschung werden die Kopien verbundener Personen gelöscht; rein lokale Angaben bleiben, bis Sie die App löschen. Ein Gerätebackup bei Apple kann lokale Daten sichern.</li>
+</ul>
+<h2>6. Ihre Rechte</h2>
+<p>Sie haben nach der DSGVO das Recht auf <strong>Auskunft</strong> (Art. 15), <strong>Berichtigung</strong> (Art. 16), <strong>Löschung</strong> (Art. 17), <strong>Einschränkung</strong> (Art. 18), <strong>Datenübertragbarkeit</strong> (Art. 20) und <strong>Widerspruch</strong> (Art. 21, siehe Abschnitt 1). Eine <strong>Einwilligung</strong> können Sie jederzeit mit Wirkung für die Zukunft widerrufen (Art. 7 Abs. 3); die Verarbeitung bis dahin bleibt rechtmäßig. So geht es: Standort ausschalten, Freigabe pausieren oder Familienmitglied entfernen (Rolle „Senior“ › „Profil“ › „Familie“), „Lernstand zeigen“ ausschalten, Absturzberichte unter „Profil“ ausschalten, Verbindung beenden (Rolle „Familie“), Berechtigungen in den iOS-Einstellungen entziehen, oder uns schreiben, wenn Sie kein Gerät mehr haben.</p>
+<p>Sie können sich bei einer <strong>Aufsichtsbehörde beschweren</strong> (Art. 77), insbesondere in dem Staat, in dem Sie leben oder arbeiten. Für uns zuständig ist die Landesbeauftragte für Datenschutz und Informationsfreiheit Nordrhein-Westfalen (LDI NRW), Postfach 20 04 44, 40102 Düsseldorf, <a href="https://www.ldi.nrw.de">https://www.ldi.nrw.de</a>.</p>
+<p><strong>Kontakt:</strong> <a href="mailto:schutzengel-app@gmx.de">schutzengel-app@gmx.de</a> oder Post an die Anschrift in Abschnitt 1. Ihre Kennung finden Sie in der App unter „Profil“ › „Datenschutz“ › „Meine Kennung“; „Auskunft anfordern“ öffnet eine vorbereitete E-Mail. Wir antworten unverzüglich, spätestens binnen eines Monats, kostenlos (Art. 12). Damit Unbefugte keine fremden Daten erhalten, lassen wir Anfragen per E-Mail in der Regel zusätzlich in der App bestätigen oder bitten um einen Ausweis; eine Kennung allein genügt nicht, weil sie unter verbundenen Personen sichtbar ist.</p>
+<h2>7. Empfänger und Länder außerhalb der EU</h2>
+<p>Empfänger sind: <strong>Google</strong> (Google Cloud EMEA Limited bzw. Google Ireland Limited sowie Google LLC, USA) mit Firebase Authentication, Cloud Firestore, Cloud Functions, Cloud Logging, Cloud Messaging, App Check, Installations und Crashlytics als <strong>Auftragsverarbeiter</strong> (Art. 28); <strong>Apple</strong> (App Store, App Attest, Push-Dienst, Karten) in eigener Verantwortung; die <strong>verbundenen Nutzer</strong> nach Abschnitt 3; der <strong>E-Mail-Dienstleister</strong> aus Abschnitt 4; der <strong>Hoster dieser Webseite</strong>, <strong>GitHub</strong> (GitHub Pages; GitHub, Inc., USA, ein Unternehmen von Microsoft), der beim Aufruf dieser Erklärung im Browser technisch notwendige Daten wie IP-Adresse, Zeitpunkt und Browserangaben verarbeitet; unsere <strong>Bank und Steuerberatung</strong>, soweit für Erstattung und Buchführung nötig; <strong>Behörden und Gerichte</strong>, wenn wir gesetzlich verpflichtet sind oder zur Verfolgung von Rechtsverstößen (Art. 6 Abs. 1 lit. c, f). Eine Weitergabe zu Werbezwecken oder ein Verkauf findet nicht statt.</p>
+<p><strong>Diese Webseite</strong> wird über GitHub Pages bei GitHub, Inc. (USA) gehostet. Beim Aufruf im Browser verarbeitet GitHub technisch notwendige Daten: Ihre IP-Adresse, Datum und Uhrzeit, die aufgerufene Seite sowie Browser- und Geräteinformationen. Nach Angaben von GitHub wird die IP-Adresse zu Sicherheitszwecken gespeichert. Wir haben auf diese Protokolle keinen Zugriff und keinen Einfluss auf ihre Speicherdauer. Eine feste Frist veröffentlicht GitHub nicht; die Daten werden nur so lange gespeichert, wie es für die Sicherheit erforderlich ist, die genaue Dauer legt GitHub fest. Grundlage ist unser berechtigtes Interesse an der sicheren und stabilen Bereitstellung (Art. 6 Abs. 1 lit. f DSGVO). Für die Übermittlung in die USA gilt der Angemessenheitsbeschluss der EU-Kommission zum EU-U.S. Data Privacy Framework vom 10. Juli 2023, dem GitHub, Inc. beigetreten ist; hilfsweise gelten Standardvertragsklauseln. Wenn Sie nicht möchten, dass Ihre IP-Adresse an GitHub übermittelt wird, schreiben Sie uns an <a href="mailto:schutzengel-app@gmx.de">schutzengel-app@gmx.de</a>. Wir senden Ihnen diese Erklärung dann per E-Mail zu. Die <strong>App</strong> ruft diese Seite nicht selbst ab; sie öffnet sich nur, wenn Sie den Link antippen.</p>
+<p>Die Datenbank und unsere Funktionen laufen in Frankfurt (europe-west3). Firebase Authentication verarbeitet Daten ausschließlich in den USA; App Check, Installations, Cloud Messaging und Crashlytics können Daten auch dort verarbeiten. Grundlage ist der <strong>Angemessenheitsbeschluss der EU-Kommission zum EU-U.S. Data Privacy Framework vom 10. Juli 2023</strong> (Art. 45 DSGVO), dem Google LLC beigetreten ist, hilfsweise <strong>Standardvertragsklauseln</strong> (Art. 46 Abs. 2 lit. c). Eine Kopie erhalten Sie auf Anfrage.</p>
+<h2>8. Angaben, Hilfe und Änderungen</h2>
+<p>Die Nutzung der App ist freiwillig. Für ein Konto sind nur die Nutzerkennung und die technischen Verbindungsdaten nötig, ohne sie gibt es die App nicht. In der Rolle „Familie“ ist außerdem der Anzeigename nötig, für das Abo eine E-Mail-Adresse. Alles andere (Telefonnummer, Gruppenname, Standort, Kontakte, Kamera, Benachrichtigungen, Face ID, Absturzberichte) ist freiwillig; ohne es fehlt nur die jeweilige Funktion.</p>
+<p>Kann die ältere Person nicht (mehr) selbst entscheiden, darf nur eine rechtlich bestellte Betreuerin oder ein Betreuer mit passendem Aufgabenkreis oder eine bevollmächtigte Person für sie handeln und bestätigt das in der App; wir speichern diese Angabe nur als Nachweis der Einwilligung zur Verteidigung gegen Rechtsansprüche (Art. 6 Abs. 1 lit. f, Art. 9 Abs. 2 lit. f DSGVO), nicht für andere Zwecke. Wir fragen nicht nach Gesundheit und werten keine Daten aus, um darauf zu schließen. SchutzEngel ersetzt keinen Notruf: In Lebensgefahr wählen Sie 112, bei Straftaten 110.</p>
+<p>Ändern sich die App, Dienstleister oder Rechtslage, passen wir diese Erklärung an und informieren Sie bei wesentlichen Änderungen vorher in der App. Die aktuelle Fassung mit Datum finden Sie in der App unter „Profil“ und unter <a href="https://schutzengel.info/app-datenschutz.html">https://schutzengel.info/app-datenschutz.html</a>.</p>
   </main>
 
   <footer>
