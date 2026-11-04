@@ -98,6 +98,17 @@ footer{border-top:1px solid #e5e2e1;padding:28px 0 40px;font-size:16px}
 footer nav{display:flex;flex-wrap:wrap;gap:8px 22px}
 footer a{color:var(--body);text-decoration:none;font-weight:700}
 footer a:hover{color:var(--green)}
+footer nav button{background:none;border:none;padding:0;font:inherit;font-weight:700;color:var(--body);cursor:pointer}
+footer nav button:hover{color:var(--green)}
+/* Cookie-Banner */
+#cc{position:fixed;left:0;right:0;bottom:0;z-index:1000;padding:12px}
+.cc-box{max-width:760px;margin:0 auto;background:#fff;border:2px solid var(--line);border-radius:20px;box-shadow:0 -10px 40px rgba(0,0,0,.18);padding:22px;display:flex;flex-direction:column;gap:14px}
+.cc-box h2{margin:0;font-size:22px;font-weight:800}
+.cc-box p{margin:0;font-size:17px;line-height:1.5;color:var(--body)}
+.cc-btns{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.cc-btns button{min-height:56px;border:none;border-radius:12px;font:inherit;font-size:19px;font-weight:800;cursor:pointer}
+#cc-yes{background:var(--green-fill);color:var(--green-ink)}
+#cc-no{background:#ebe7e6;color:var(--ink)}
 :focus-visible{outline:3px solid var(--green);outline-offset:3px;border-radius:6px}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
@@ -327,6 +338,7 @@ footer a:hover{color:var(--green)}
 <a href="/app-datenschutz">App-Datenschutz</a>
 <a href="/agb">AGB</a>
 <a href="/kontakt">Kontakt</a>
+<button type="button" id="cc-open">Cookie-Einstellungen</button>
 </nav>
 </div>
 </footer>
@@ -420,6 +432,70 @@ footer a:hover{color:var(--green)}
   });
 
   route();
+})();
+</script>
+
+<!-- ============ COOKIE-BANNER + META-PIXEL (lädt erst nach „Alle akzeptieren“) ============ -->
+<div id="cc" role="dialog" aria-labelledby="cc-title" aria-describedby="cc-text" hidden>
+<div class="cc-box">
+<h2 id="cc-title" tabindex="-1">Cookies und Messung</h2>
+<p id="cc-text">Mit Ihrer Zustimmung laden wir das Meta-Pixel. Es zeigt uns, welche Anzeigen auf Facebook und Instagram zu Installationen führen. Ohne Zustimmung wird nichts von Meta geladen. <a href="/datenschutz#s9">Mehr in der Datenschutzerklärung</a></p>
+<div class="cc-btns">
+<button type="button" id="cc-no">Nur notwendige</button>
+<button type="button" id="cc-yes">Alle akzeptieren</button>
+</div>
+</div>
+</div>
+
+<script>
+(function () {
+  var PIXEL_ID = '1159235726528655', KEY = 'se_consent', loaded = false;
+  var banner = document.getElementById('cc');
+  function getC() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  function setC(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+
+  function loadPixel() {
+    if (loaded) return;
+    loaded = true;
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', PIXEL_ID);
+    fbq('track', 'PageView');
+  }
+
+  function clearMetaCookies() {
+    var host = location.hostname, parts = host.split('.');
+    var domains = ['', host, '.' + host, '.' + parts.slice(-2).join('.')];
+    ['_fbp', '_fbc'].forEach(function (n) {
+      domains.forEach(function (d) {
+        document.cookie = n + '=; Max-Age=0; path=/' + (d ? '; domain=' + d : '');
+      });
+    });
+  }
+
+  function choose(all) {
+    var wasLoaded = loaded;
+    setC(all ? 'all' : 'necessary');
+    banner.hidden = true;
+    if (all) { loadPixel(); }
+    else { clearMetaCookies(); if (wasLoaded) location.reload(); }
+  }
+
+  document.getElementById('cc-yes').addEventListener('click', function () { choose(true); });
+  document.getElementById('cc-no').addEventListener('click', function () { choose(false); });
+  document.getElementById('cc-open').addEventListener('click', function () {
+    banner.hidden = false;
+    document.getElementById('cc-title').focus();
+  });
+
+  /* Lead = Klick auf den TestFlight-Link (nur mit Zustimmung) */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('a[href^="https://testflight.apple.com/join/"]') : null;
+    if (a && loaded && window.fbq) fbq('track', 'Lead');
+  });
+
+  var c = getC();
+  if (c === 'all') loadPixel();
+  else if (c !== 'necessary') banner.hidden = false;
 })();
 </script>
 </body>
