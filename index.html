@@ -102,13 +102,14 @@ footer nav button{background:none;border:none;padding:0;font:inherit;font-weight
 footer nav button:hover{color:var(--green)}
 /* Cookie-Banner */
 #cc{position:fixed;left:0;right:0;bottom:0;z-index:1000;padding:12px}
-.cc-box{max-width:760px;margin:0 auto;background:#fff;border:2px solid var(--line);border-radius:20px;box-shadow:0 -10px 40px rgba(0,0,0,.18);padding:22px;display:flex;flex-direction:column;gap:14px}
+.cc-box{max-width:760px;max-height:calc(100vh - 24px);overflow:auto;margin:0 auto;background:#fff;border:2px solid var(--line);border-radius:20px;box-shadow:0 -10px 40px rgba(0,0,0,.18);padding:22px;display:flex;flex-direction:column;gap:14px}
 .cc-box h2{margin:0;font-size:22px;font-weight:800}
 .cc-box p{margin:0;font-size:17px;line-height:1.5;color:var(--body)}
 .cc-btns{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
-.cc-btns button{min-height:56px;border:none;border-radius:12px;font:inherit;font-size:19px;font-weight:800;cursor:pointer}
-#cc-yes{background:var(--green-fill);color:var(--green-ink)}
-#cc-no{background:#ebe7e6;color:var(--ink)}
+.cc-btns button{min-height:56px;border:none;border-radius:12px;background:var(--green-fill);color:var(--green-ink);font:inherit;font-size:19px;font-weight:800;cursor:pointer}
+.cc-more summary{cursor:pointer;display:flex;align-items:center;min-height:44px;font-size:17px;font-weight:700;color:var(--green)}
+.cc-more div{display:flex;flex-direction:column;gap:10px}
+.cc-more p{font-size:16px}
 :focus-visible{outline:3px solid var(--green);outline-offset:3px;border-radius:6px}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
@@ -438,12 +439,21 @@ footer nav button:hover{color:var(--green)}
 <!-- ============ COOKIE-BANNER + META-PIXEL (lädt erst nach „Alle akzeptieren“) ============ -->
 <div id="cc" role="dialog" aria-labelledby="cc-title" aria-describedby="cc-text" hidden>
 <div class="cc-box">
-<h2 id="cc-title" tabindex="-1">Cookies und Messung</h2>
-<p id="cc-text">Mit Ihrer Zustimmung laden wir das Meta-Pixel. Es zeigt uns, welche Anzeigen auf Facebook und Instagram zu Installationen führen. Ohne Zustimmung wird nichts von Meta geladen. <a href="/datenschutz#s9">Mehr in der Datenschutzerklärung</a></p>
+<h2 id="cc-title" tabindex="-1">Cookies</h2>
+<p id="cc-text">Wir verwenden Cookies von Meta (Facebook und Instagram), um unsere Werbung zu messen. Das geht nur mit Ihrer Zustimmung.</p>
 <div class="cc-btns">
-<button type="button" id="cc-no">Nur notwendige</button>
+<button type="button" id="cc-no">Alle ablehnen</button>
 <button type="button" id="cc-yes">Alle akzeptieren</button>
 </div>
+<details class="cc-more">
+<summary>Mehr Informationen</summary>
+<div>
+<p><strong>Was passiert?</strong> Mit „Alle akzeptieren“ laden wir das Meta-Pixel der Meta Platforms Ireland Limited. Es zeigt uns, welche unserer Anzeigen auf Facebook und Instagram zu Installationen führen.</p>
+<p><strong>Welche Daten?</strong> Meta kann zum Beispiel Ihre IP-Adresse, Browser- und Geräteinformationen, die besuchte Seite und Ihre Klicks auf der Seite erhalten, etwa auf den Download-Knopf. Sind Sie bei Facebook oder Instagram angemeldet, kann Meta die Daten Ihrem Konto zuordnen. Daten können in die USA übermittelt werden.</p>
+<p><strong>Ihre Wahl:</strong> Ohne Zustimmung wird nichts von Meta geladen. Sie können Ihre Entscheidung jederzeit über „Cookie-Einstellungen“ unten auf der Seite ändern.</p>
+<p><a href="/datenschutz#s9">Datenschutzerklärung, Abschnitt Meta-Pixel</a></p>
+</div>
+</details>
 </div>
 </div>
 
