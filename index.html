@@ -110,6 +110,278 @@ footer nav button:hover{color:var(--green)}
 .cc-more summary{cursor:pointer;display:flex;align-items:center;min-height:44px;font-size:17px;font-weight:700;color:var(--green)}
 .cc-more div{display:flex;flex-direction:column;gap:10px}
 .cc-more p{font-size:16px}
+/* Schnell gefragt */
+.qa{display:flex;flex-direction:column;gap:12px;padding:0 0 8px}
+.qa-toggle,.qa-q{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 18px;border-radius:999px;border:2px solid var(--line);background:#fff;color:var(--ink);font:inherit;font-size:18px;font-weight:800;cursor:pointer}
+.qa-toggle[aria-expanded="true"]{background:var(--green);border-color:var(--green);color:#fff}
+.qa-list{display:flex;flex-wrap:wrap;gap:10px}
+.qa-q{font-size:17px;font-weight:700;text-align:left}
+.qa-q[aria-pressed="true"]{border-color:var(--green);background:#e8f5e9;color:var(--green-ink)}
+.qa-a{position:relative;display:flex;gap:14px;align-items:flex-start;background:#e8f5e9;border-radius:16px;padding:18px 56px 18px 18px}
+.qa-a h2{margin:0 0 4px;font-size:20px;font-weight:800}
+.qa-a p{margin:0;font-size:18px;line-height:1.5;color:var(--ink)}
+.qa-x{position:absolute;top:8px;right:8px;width:44px;height:44px;border:none;border-radius:999px;background:transparent;color:var(--body);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.qa-x:hover{background:rgba(0,0,0,.06)}
+/* Abschnitte */
+.sec{padding:72px 0}
+.sec-h{margin:0;font-size:clamp(30px,4.4vw,44px);line-height:1.12;font-weight:800;letter-spacing:-.02em;text-wrap:balance}
+.sec-lead{margin:0;font-size:20px;line-height:1.5;color:var(--body)}
+.stack{display:flex;flex-direction:column;gap:28px}
+/* Handys */
+.phones{display:flex;gap:24px;justify-content:center;align-items:flex-start;flex-wrap:wrap}
+.phone-col{display:flex;flex-direction:column;align-items:center;gap:12px}
+.phone-tag{padding:6px 16px;border-radius:999px;background:var(--ink);color:#fff;font-size:20px;font-weight:800}
+.phone{width:260px;height:540px;border-radius:40px;border:9px solid var(--ink);background:var(--bg);overflow:hidden;box-shadow:0 30px 50px rgba(0,110,28,.12);display:flex;flex-direction:column;padding:22px 16px 16px;gap:14px}
+.ph-card{background:#fff;border-radius:12px;box-shadow:0 20px 40px rgba(0,0,0,.07);padding:14px}
+.ph-line{height:6px;border-radius:999px;background:#e5e2e1}.ph-line div{height:100%;border-radius:999px;background:var(--green-fill)}
+.facts{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:center;font-size:18px;font-weight:700}
+.facts li{display:flex;align-items:center;gap:8px}
+/* ============ Quiz im App-Design ============
+   Quelle der Werte: App-Repo ios/Packages/SEDesignSystem (Tokens, Light-Mode aus Colors.xcassets),
+   Features/Training (Senior-Quiz) und TourPreviewFamilyOverview / FamilyHome (Angehörigen-Übersicht).
+   iOS-Textstile bei „Large“: largeTitle 34/41, title 28/34, title2 22/28, title3 20/25, body 17/22,
+   callout 16/21, subheadline 15/20, caption 12/16. */
+@font-face{font-family:"SE Fraunces";src:url("/fonts/fraunces-var-latin.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
+:root{
+  /* SEColor (ColorTokens.swift, Colors.xcassets, Light) */
+  --se-canvas:#FCF9F8;        /* canvas */
+  --se-surface:#FFFFFF;       /* surface */
+  --se-surface-warm:#F4EEE8;  /* surfaceWarm */
+  --se-warm-soft:#FBEADB;     /* warmSoft */
+  --se-ink:#1B1C1A;           /* ink */
+  --se-ink-muted:#4A4F4C;     /* inkMuted */
+  --se-accent:#005A17;        /* accent */
+  --se-accent-soft:#DDF2DF;   /* accentSoft */
+  --se-accent-deep:#0B3D1A;   /* accentDeep */
+  --se-accent-line:#9CC7A2;   /* accentLine */
+  --se-on-accent:#FFFFFF;     /* onAccent */
+  --se-alert:#961010;         /* alert */
+  --se-alert-soft:#FBE3E0;    /* alertSoft */
+  --se-alert-line:#E0A19B;    /* alertLine */
+  --se-caution:#664500;       /* caution */
+  --se-caution-soft:#FFF1D6;  /* cautionSoft */
+  --se-steel:#434F58;         /* steel */
+  --se-divider:#D9D4CF;       /* divider */
+  --se-deep-track:#5E9A6B;    /* deepTrack */
+  --se-flame:#D97A35;         /* flame */
+  --se-angel-line:#7DBB83;    /* angelLine */
+  --se-angel-halo:#9BF58F;    /* angelHalo */
+  /* Spacing (MetricTokens.swift) */
+  --se-xs:4px;--se-s:8px;--se-m:16px;--se-l:24px;--se-xl:32px;--se-xxl:48px;
+  /* Radius (MetricTokens.swift) */
+  --se-r-chip:8px;            /* Radius.chip */
+  --se-r-control:16px;        /* Radius.control */
+  --se-r-card:24px;           /* Radius.card */
+  --se-r-duel:32px;           /* Radius.duelCard */
+  /* Metrics (MetricTokens.swift) */
+  --se-tap:72px;              /* Metrics.minTapTarget */
+  --se-primary-h:88px;        /* Metrics.primaryButtonHeight */
+  /* SEType (TypeTokens.swift) */
+  --se-font:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,"Helvetica Neue",Arial,system-ui,sans-serif;
+  --se-serif:"SE Fraunces",Georgia,"Times New Roman",serif; /* Fraunces[opsz,wght].ttf, selbst gehostet */
+  /* Motion (MotionTokens.swift): Federn als Kurven angenähert */
+  --se-settle:.45s cubic-bezier(.3,1.15,.5,1);   /* Motion.settle  spring(0.45, bounce 0.15) */
+  --se-arrive:.6s cubic-bezier(.3,1.25,.5,1);    /* Motion.arrive  spring(0.6, bounce 0.25) */
+  --se-press:.2s cubic-bezier(.3,1.3,.5,1);      /* Motion.press   spring(0.2, bounce 0.3) */
+  --se-ring:.9s cubic-bezier(.25,1.05,.5,1);     /* Motion.ring    spring(0.9, bounce 0.1) */
+  /* Rahmen-Sektion (Canvas „Website Redesign“, Bild 3) */
+  --rd-green:#19462D;--rd-eyebrow:#A9D3A6;--rd-lead:#CFE0CF;--rd-paper:#F3F1E9;
+  --rd-serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+}
+/* Rahmen */
+.quiz-sec{background:var(--rd-green);color:#fff;padding:112px 0 120px}
+.qz-head{display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center;max-width:820px;margin:0 auto}
+.qz-eyebrow{font-size:14px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--rd-eyebrow)}
+.qz-h{margin:0;font-family:var(--rd-serif);font-size:clamp(34px,5vw,56px);line-height:1.1;font-weight:500;letter-spacing:-.02em;color:#fff;text-wrap:balance}
+.qz-lead{margin:0;font-size:20px;line-height:1.55;color:var(--rd-lead)}
+.qz-outro{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:20px 32px;margin-top:56px;text-align:center}
+.qz-outro p{margin:0;font-family:var(--rd-serif);font-style:italic;font-size:clamp(21px,2.4vw,26px);line-height:1.35;color:#fff}
+.qz-outro a{display:inline-flex;align-items:center;min-height:56px;text-decoration:none;background:var(--rd-paper);color:var(--rd-green);font-size:18px;font-weight:600;padding:0 32px;border-radius:999px}
+.qz-outro a:hover{color:var(--rd-green);filter:brightness(1.04)}
+.quiz-sec :focus-visible{outline:3px solid var(--rd-eyebrow);outline-offset:3px}
+/* Bildschirm der App: Grund canvas, Ecken Radius.duelCard */
+.se-app{max-width:880px;margin:56px auto 0;background:var(--se-canvas);color:var(--se-ink);border-radius:var(--se-r-duel);padding:var(--se-xl);box-shadow:0 40px 80px rgba(0,0,0,.25);font-family:var(--se-font);-webkit-font-smoothing:antialiased;text-align:left}
+.se-app :focus-visible{outline:3px solid var(--se-accent);outline-offset:3px;border-radius:var(--se-r-control)}
+.se-app [tabindex="-1"]:focus{outline:none}
+.se-app button,.se-app a{-webkit-tap-highlight-color:transparent}
+.se-view{display:flex;flex-direction:column}
+.se-fade{animation:se-in var(--se-arrive) both}
+.se-fade-out{opacity:0;transition:opacity .3s ease-out}
+@keyframes se-in{from{opacity:0}to{opacity:1}}
+.se-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+/* QuestionScreen: VStack spacing m */
+.se-q{gap:var(--se-m)}
+/* RoundTopBar ohne Schließen-Knopf: ProgressBar (Kapsel 18, Zahl in SEType.control) */
+.se-pbar{display:flex;align-items:center;gap:var(--se-m)}
+.se-pbar-track{flex:1;height:18px;border-radius:999px;background:var(--se-accent-soft);overflow:hidden}
+.se-pbar-fill{height:100%;border-radius:999px;background:var(--se-accent);transition:width var(--se-ring)}
+.se-pbar-count{font-size:22px;line-height:28px;color:var(--se-accent);font-variant-numeric:tabular-nums;white-space:nowrap}
+.se-pos{margin:0;font-size:20px;line-height:25px;color:var(--se-ink-muted)}           /* SEType.body, inkMuted */
+.se-statement{display:flex;flex-direction:column;gap:var(--se-s);padding:var(--se-m);background:var(--se-surface);border:1px solid var(--se-divider);border-radius:var(--se-r-card)}
+.se-kicker{font-size:20px;line-height:25px;text-transform:uppercase;color:var(--se-accent)} /* SEType.caption, uppercase, accent */
+.se-prompt{margin:0;font-size:28px;line-height:34px;font-weight:600;color:var(--se-ink)}   /* SEType.heading */
+/* AnswerOptions .choices: Zeilen 72 hoch, Rand 2, Radius.control */
+.se-opts{display:flex;flex-direction:column;gap:var(--se-m)}
+.se-opt{display:flex;align-items:center;gap:var(--se-m);width:100%;min-height:var(--se-tap);padding:var(--se-m);margin:0;text-align:left;font:inherit;font-size:20px;line-height:25px;color:var(--se-ink);background:var(--se-surface);border:2px solid var(--se-steel);border-radius:var(--se-r-control);cursor:pointer;transition:color var(--se-settle),background-color var(--se-settle),border-color var(--se-settle),transform var(--se-press)}
+.se-opt:active:not([aria-disabled="true"]){transform:scale(.97)}
+.se-opt[aria-disabled="true"]{cursor:default}
+.se-opt-text{flex:1;min-width:0}
+.se-letter{width:44px;height:44px;border-radius:999px;background:var(--se-accent-soft);color:var(--se-accent);font-size:20px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.se-opt-mark{display:none;flex-shrink:0;width:26px;height:26px}
+.se-opt-note{display:none;white-space:nowrap}
+.se-opt[data-state="correct"]{color:var(--se-accent);background:var(--se-accent-soft);border-color:var(--se-accent)}
+.se-opt[data-state="wrong"]{color:var(--se-alert);border-color:var(--se-alert)}
+.se-opt[data-state="dimmed"]{color:var(--se-ink-muted);border-color:var(--se-divider)}
+.se-opt[data-state="correct"] .se-letter,.se-opt[data-state="wrong"] .se-letter{display:none}
+.se-opt[data-state="correct"] .se-opt-mark,.se-opt[data-state="wrong"] .se-opt-mark{display:block}
+.se-opt[data-state="correct"] .se-opt-note,.se-opt[data-state="wrong"] .se-opt-note{display:inline}
+/* Hinweis: TextButton + InfoNote */
+.se-textbtn{display:flex;align-items:center;justify-content:center;gap:var(--se-s);width:100%;min-height:var(--se-tap);padding:0 var(--se-m);border:none;border-radius:var(--se-r-control);background:transparent;font:inherit;font-size:22px;line-height:28px;font-weight:600;color:var(--se-accent);text-decoration:underline;text-decoration-color:var(--se-accent);text-underline-offset:3px;cursor:pointer}
+.se-textbtn:active{background:var(--se-accent-soft)}
+.se-infonote{display:flex;align-items:flex-start;gap:var(--se-m);padding:var(--se-l);background:var(--se-accent-soft);border-radius:var(--se-r-card)}
+.se-infonote svg{flex-shrink:0;width:26px;height:26px;margin-top:-1px}
+.se-infonote p{margin:0;font-size:20px;line-height:25px;color:var(--se-ink)}
+/* AnswerFeedbackScreen: VStack spacing l, Innenabstand xl */
+.se-fb{gap:var(--se-l)}
+.se-fb-head{display:flex;align-items:center;gap:var(--se-m);margin:0;font-size:34px;line-height:41px;font-weight:600}   /* SEType.screenTitle */
+.se-fb-head svg{flex-shrink:0;width:38px;height:38px}
+.se-fb-note{margin:0;font-size:28px;line-height:34px;font-weight:600;color:var(--se-ink)}                                   /* SEType.heading */
+/* TrainingCard mit Akzentleiste links (Spacing.s breit) */
+.se-tcard{display:flex;background:var(--se-surface);border:1px solid var(--se-divider);border-radius:var(--se-r-card);overflow:hidden}
+.se-tcard-bar{width:var(--se-s);flex-shrink:0}
+.se-tcard-body{flex:1;min-width:0;padding:var(--se-l);display:flex;flex-direction:column;gap:var(--se-m)}
+.se-tcard-body p{margin:0;font-size:20px;line-height:25px;color:var(--se-ink)}
+.se-tcard-body .se-correct{font-size:28px;line-height:34px;font-weight:600}
+/* PrimaryButton (88, accent-Verlauf) und SecondaryButton (72, Rand 2) */
+.se-primary,.se-secondary{display:flex;align-items:center;justify-content:center;gap:var(--se-s);width:100%;padding:0 var(--se-m);border-radius:var(--se-r-control);font:inherit;font-size:22px;line-height:28px;text-decoration:none;cursor:pointer;transition:transform var(--se-press),background-color .2s}
+.se-primary{min-height:var(--se-primary-h);border:none;background:linear-gradient(var(--se-accent),rgba(0,90,23,.95));color:var(--se-on-accent);font-weight:500}
+.se-primary:hover{color:var(--se-on-accent)}
+.se-secondary{min-height:var(--se-tap);border:2px solid var(--se-accent);background:var(--se-surface);color:var(--se-accent)}
+.se-secondary:hover{color:var(--se-accent)}
+.se-primary:active,.se-secondary:active{transform:scale(.97)}
+.se-secondary:active{background:var(--se-accent-soft)}
+.se-primary svg,.se-secondary svg{width:24px;height:24px;flex-shrink:0}
+/* Auswertung: TourPreviewFamilyOverview (Begrüßung, HeroCard, Lernstand-Kachel), VStack spacing m */
+.se-fam{gap:var(--se-m)}
+.se-greet{display:flex;flex-direction:column;gap:var(--se-xs);padding-top:var(--se-s)}
+.se-greet h3{margin:0;font-family:var(--se-serif);font-weight:400;font-size:34px;line-height:41px;color:var(--se-ink)}
+.se-greet p{margin:0;font-size:20px;line-height:25px;color:var(--se-ink-muted)}
+.se-hero{display:flex;align-items:center;gap:var(--se-m);padding:var(--se-l);border-radius:var(--se-r-card);background:linear-gradient(var(--se-surface-warm),var(--se-surface));box-shadow:0 8px 32px rgba(27,28,26,.08)}
+.se-mono{position:relative;width:80px;height:80px;flex-shrink:0}
+.se-mono svg{position:absolute;inset:0;width:100%;height:100%}
+.se-mono span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--se-serif);font-size:34px;letter-spacing:.34px;color:var(--se-accent)}
+.se-hero-txt{flex:1;min-width:0;display:flex;flex-direction:column;gap:var(--se-s)}
+.se-name{margin:0;font-family:var(--se-serif);font-size:34px;line-height:41px;color:var(--se-ink)}
+.se-chip{display:flex;align-items:center;gap:var(--se-xs);padding:var(--se-xs) var(--se-s);border-radius:var(--se-r-chip);background:var(--se-accent-soft);color:var(--se-accent);font-size:20px;line-height:25px}
+.se-chip svg{width:18px;height:18px;flex-shrink:0}
+.se-example{font-size:15px;line-height:20px;color:var(--se-ink-muted)}
+/* Lernstand-Kachel: Innenabstand 20/20/22, Blöcke 18, Kontur 1 divider */
+.se-learn{display:flex;flex-direction:column;gap:18px;padding:20px 20px 22px;background:var(--se-surface);border:1px solid var(--se-divider);border-radius:var(--se-r-card)}
+.se-learn-head{display:flex;align-items:center;gap:14px}
+.se-eyebrow{font-size:12px;line-height:16px;font-weight:600;letter-spacing:1.44px;text-transform:uppercase;color:var(--se-ink-muted)}
+.se-series{display:flex;flex-direction:column;gap:2px;flex:1}
+.se-series-line{display:flex;align-items:baseline;gap:6px}
+.se-series-num{font-family:var(--se-serif);font-size:28px;line-height:34px;color:var(--se-ink)}   /* SEType.profileName */
+.se-unit{font-size:15px;font-weight:600;letter-spacing:.72px;text-transform:uppercase;color:var(--se-ink-muted)}
+.se-flame{position:relative;width:56px;height:56px;border-radius:999px;background:var(--se-warm-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.se-flame svg{width:25.7px;height:30px;transform-origin:50% 90%}
+.se-flame.burning{animation:se-glow 5s ease-out 1 both}
+.se-flame.burning svg{animation:se-flame 1s ease-in-out 5}
+@keyframes se-flame{0%{transform:none}20%{transform:rotate(-2deg) scale(1.06,1.12)}40%{transform:rotate(1.5deg) scale(.97,1.05)}60%{transform:rotate(-1deg) scale(1.05,1.14)}80%{transform:rotate(2deg) scale(.98,1.04)}100%{transform:none}}
+@keyframes se-glow{0%{box-shadow:0 0 0 0 rgba(217,122,53,.34)}50%{box-shadow:0 0 0 10px rgba(217,122,53,.14)}100%{box-shadow:0 0 0 16px rgba(217,122,53,0)}}
+.se-angel{width:48px;height:48px;border-radius:999px;background:var(--se-accent-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.se-angel svg{width:34px;height:34px}
+.se-rule{height:1px;background:var(--se-divider)}
+/* SEWeekStrip: sieben Kreise 36, Abstand 6, Beschriftung 12 */
+.se-week{display:flex;justify-content:space-between;gap:var(--se-xs)}
+.se-day{display:flex;flex-direction:column;align-items:center;gap:6px}
+.se-dot{width:36px;height:36px;border-radius:999px;display:flex;align-items:center;justify-content:center}
+.se-dot.empty{background:var(--se-surface-warm)}
+.se-dot.goal{background:var(--se-accent)}
+.se-dot svg{display:block}
+.se-dot .arc{transition:stroke-dashoffset var(--se-ring)}
+.se-day span{font-size:12px;line-height:16px;color:var(--se-ink-muted)}
+.se-day.today span{font-weight:700;color:var(--se-ink)}
+/* Fragen heute */
+.se-qs{display:flex;flex-direction:column;gap:var(--se-s)}
+.se-qs-line{display:flex;align-items:baseline;justify-content:space-between;gap:var(--se-s)}
+.se-qs-num{display:flex;align-items:baseline;gap:6px}
+.se-qs-num b{font-family:var(--se-serif);font-weight:400;font-size:34px;line-height:38px;color:var(--se-ink)}  /* SEType.displayName */
+.se-qs-num span{font-size:16px;color:var(--se-ink-muted)}
+.se-pct{font-size:15px;font-weight:600;color:var(--se-ink-muted)}
+.se-pct.strong{font-weight:700;color:var(--se-accent)}
+.se-goalbar{height:12px;border-radius:999px;background:var(--se-accent-soft);overflow:hidden}
+.se-goalbar div{height:100%;border-radius:999px;background:var(--se-deep-track);width:0;transition:width var(--se-settle)}
+.se-goalbar.reached div{background:var(--se-accent)}
+.se-detail{margin:0;display:flex;align-items:baseline;gap:var(--se-s);font-size:15px;line-height:20px;color:var(--se-ink-muted)}
+.se-detail.done{font-weight:600;color:var(--se-accent)}
+.se-detail svg{width:16px;height:16px;flex-shrink:0;align-self:center}
+/* Themen der Runde: Karte wie die Kachel, Zeilen mit Ergebnis-Symbol und Chip */
+.se-topics{display:flex;flex-direction:column;gap:14px;padding:20px 20px 22px;background:var(--se-surface);border:1px solid var(--se-divider);border-radius:var(--se-r-card)}
+.se-topics-head{display:flex;align-items:baseline;justify-content:space-between;gap:var(--se-s)}
+.se-topics-head span:last-child{font-size:15px;color:var(--se-ink-muted)}
+.se-topics ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.se-topics li{display:flex;align-items:center;gap:12px;min-height:56px;padding:var(--se-s) 0;border-top:1px solid var(--se-divider)}
+.se-topics li:first-child{border-top:none}
+.se-topics li svg{width:28px;height:28px;flex-shrink:0}
+.se-topics li .t{flex:1;min-width:0;font-size:17px;line-height:24px;font-weight:600;color:var(--se-ink)}
+.se-state{flex-shrink:0;padding:6px 12px;border-radius:var(--se-r-chip);font-size:15px;line-height:20px;font-weight:500}
+.se-state.ok{background:var(--se-accent-soft);color:var(--se-accent)}
+.se-state.bad{background:var(--se-alert-soft);color:var(--se-alert)}
+.se-actions{display:flex;flex-direction:column;gap:var(--se-m);margin-top:var(--se-s)}
+.se-cta{display:flex;flex-direction:column;gap:14px;padding-top:var(--se-l);margin-top:var(--se-s);border-top:1px solid var(--se-divider)}
+.se-cta p{margin:0;font-size:20px;line-height:25px;font-weight:600;color:var(--se-ink)}
+.se-cta .platforms{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.se-cta .pbtn{padding:14px 16px;gap:12px;min-width:0}
+.se-cta .pbtn strong{font-size:21px}
+.se-cta .badge-soon{padding:6px 8px}
+@media (max-width:640px){
+  .quiz-sec{padding:64px 0 72px}
+  .quiz-sec>.wrap{padding:0 16px}
+  .qz-head{gap:16px}
+  .qz-lead{font-size:18px}
+  .se-app{margin-top:40px;padding:var(--se-m);border-radius:var(--se-r-card)}
+  .se-fb{padding:var(--se-m)}
+  .qz-outro{margin-top:40px}
+}
+@media (prefers-reduced-motion:reduce){
+  .se-fade,.se-flame.burning,.se-flame.burning svg{animation:none!important}
+  .se-pbar-fill,.se-opt,.se-goalbar div,.se-dot .arc,.se-fade-out{transition:none!important}
+}
+.ms.fill{font-variation-settings:"FILL" 1,"wght" 400,"GRAD" 0,"opsz" 48}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+/* Tabellen */
+.tbl-wrap{border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 30px 50px rgba(0,0,0,.06)}
+table.tbl{width:100%;border-collapse:collapse;font-size:17px}
+.tbl th,.tbl td{padding:16px 14px;border-bottom:1px solid #ebe7e6;vertical-align:middle}
+.tbl tr:last-child td{border-bottom:none}
+.tbl thead th{font-size:16px;font-weight:800;background:var(--soft);text-align:center}
+.tbl tbody th{text-align:left;font-weight:700;line-height:1.35}
+.tbl td{text-align:center}
+.tbl .se{background:#e8f5e9}
+.tbl thead .se{background:var(--green);color:#fff}
+.tbl small{display:block;font-size:13px;font-weight:500;color:var(--body);margin-top:2px}
+.tbl thead .se small{color:#e8f5e9}
+.yes{color:var(--green)}.no{color:#8a8f89}
+.priv ul{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+.priv li{display:flex;align-items:flex-start;gap:8px;font-size:17px;font-weight:700;line-height:1.35}
+.priv li .ms{font-size:22px;color:var(--green)}
+.priv .never{background:#ffeceb}
+.priv .never li .ms{color:#ba1a1a}
+/* Über uns */
+.founder{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;padding:32px}
+.founder blockquote{margin:0;flex:1 1 300px;font-size:clamp(20px,2.2vw,24px);line-height:1.55;color:var(--ink)}
+.avatar{width:72px;height:72px;border-radius:999px;background:var(--slate-bg);display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:800;flex-shrink:0}
+/* Schluss */
+.final{background:#e8f5e9}
+@media (max-width:640px){
+    .sec{padding:56px 0}
+  .tbl th,.tbl td{padding:12px 8px}
+  table.tbl{font-size:15px}
+  .tbl thead th{font-size:14px}
+  .phone{width:230px;height:500px}
+  .founder{padding:24px}
+}
 :focus-visible{outline:3px solid var(--green);outline-offset:3px;border-radius:6px}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
@@ -125,6 +397,17 @@ footer nav button:hover{color:var(--green)}
 <span>SchutzEngel</span>
 </a>
 </header>
+
+<!-- Schnell gefragt -->
+<nav class="qa" id="fragen" aria-label="Schnell gefragt">
+<div><button type="button" class="qa-toggle" id="qa-toggle" aria-expanded="false" aria-controls="qa-list"><span class="ms" aria-hidden="true" style="font-size:22px" id="qa-icon">menu</span>Schnell gefragt</button></div>
+<div class="qa-list" id="qa-list" hidden></div>
+<div class="qa-a" id="qa-answer" role="region" aria-live="polite" hidden>
+<span class="ms" aria-hidden="true" style="font-size:26px;color:var(--green);margin-top:2px">chat_bubble</span>
+<div><h2 id="qa-title"></h2><p id="qa-text"></p></div>
+<button type="button" class="qa-x" id="qa-close" aria-label="Antwort schließen"><span class="ms" aria-hidden="true" style="font-size:24px">close</span></button>
+</div>
+</nav>
 
 <main class="hero">
 <div class="hero-main">
@@ -176,13 +459,174 @@ footer nav button:hover{color:var(--green)}
 <p class="source">Hochrechnung auf Basis der Polizeilichen Kriminalstatistik 2025 des BKA: 98,5 Mio. € Schaden bei 9.444 Fällen (falsche Polizisten, Enkeltrick und Schockanrufe). Laut BKA wird mehr als die Hälfte der Fälle nicht angezeigt – das Dunkelfeld ist hier nicht enthalten.</p>
 </aside>
 
-<a class="quizlink" href="/quiz">
+<a class="quizlink" href="#quiz">
 <span style="width:64px;height:64px;border-radius:14px;background:#e8f5e9;display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="ms" aria-hidden="true" style="font-size:36px;color:var(--green)">quiz</span></span>
 <span style="display:flex;flex-direction:column;gap:4px;flex-grow:1"><span style="font-size:22px;font-weight:800">Erst selbst testen?</span><span style="font-size:18px;color:var(--body)">Enkeltrick-Quiz: 5 knifflige Fragen</span></span>
-<span class="ms" aria-hidden="true" style="font-size:32px;color:var(--green)">arrow_forward</span>
+<span class="ms" aria-hidden="true" style="font-size:32px;color:var(--green)">arrow_downward</span>
 </a>
 </main>
 </div>
+
+<!-- So funktioniert's: zwei Handys -->
+<section class="sec" aria-labelledby="how-h" style="padding-top:24px">
+<div class="wrap stack" style="align-items:center;text-align:center">
+<div class="stack" style="gap:12px;max-width:720px">
+<h2 class="sec-h" id="how-h">Ihre Eltern üben. Sie sehen den Stand.</h2>
+<p class="sec-lead">Eine App, zwei Ansichten: Ihre Eltern machen jeden Tag ein kurzes Quiz, und Sie sehen auf Ihrem Handy, was schon sitzt.</p>
+</div>
+<figure role="img" aria-label="Zwei Handys: links übt Ihre Mutter oder Ihr Vater mit dem Quiz, rechts sehen Sie den Lernstand. Beispielansicht." style="margin:0;display:flex;flex-direction:column;align-items:center;gap:10px">
+<div class="phones" aria-hidden="true">
+<div class="phone-col">
+<span class="phone-tag">Ihre Eltern üben</span>
+<div class="phone" style="text-align:left">
+<div style="display:flex;justify-content:space-between;align-items:center;font-size:15px;font-weight:700;color:var(--slate)"><span>Frage 1 von 5</span><svg width="26" height="26" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#006e1c"/><ellipse cx="50" cy="19" rx="17" ry="7.5" fill="#98f290"/><ellipse cx="50" cy="19" rx="8" ry="1.6" fill="#006e1c"/><path d="M7,38 C26,33 40,55 50,71 C60,55 74,33 93,38 C86,58 64,77 50,85 C36,77 14,58 7,38 Z" fill="none" stroke="#fff" stroke-width="4.5" stroke-linejoin="round"/></svg></div>
+<div class="qbar"><div style="width:40%"></div></div>
+<span style="align-self:flex-start;padding:4px 12px;border-radius:999px;background:var(--slate-bg);color:#26333b;font-size:14px;font-weight:700">Enkeltrick</span>
+<div class="ph-card" style="padding:16px;font-size:20px;line-height:1.3;font-weight:700">Ein Anrufer sagt: „Rate mal, wer hier ist!“ Was ist die cleverste Reaktion?</div>
+<div style="border:2px solid var(--line);background:#fff;border-radius:12px;padding:14px;font-size:17px;font-weight:700">Einen Namen raten</div>
+<div style="border:3px solid var(--green);background:#eaf5ea;border-radius:12px;padding:13px;font-size:17px;font-weight:700;color:var(--green-ink);display:flex;align-items:center;justify-content:space-between;gap:8px">„Sag du mir, wer du bist“<span class="ms fill" style="font-size:24px;color:var(--green)">check_circle</span></div>
+<div style="margin-top:auto;text-align:center;font-size:22px;font-weight:800;color:var(--green)">Super gemacht!</div>
+</div>
+</div>
+<div class="phone-col" style="margin-top:44px">
+<span class="phone-tag" style="background:var(--green)">Sie sehen den Stand</span>
+<div class="phone" style="text-align:left;gap:12px">
+<div style="display:flex;align-items:center;gap:10px"><span style="width:40px;height:40px;border-radius:999px;background:var(--slate-bg);display:flex;align-items:center;justify-content:center;font-weight:800">M</span><div style="display:flex;flex-direction:column"><span style="font-size:13px;color:var(--slate);font-weight:700">LERNSTAND</span><span style="font-size:18px;font-weight:800">Mama</span></div></div>
+<div class="ph-card" style="display:flex;flex-direction:column;gap:4px"><span style="font-size:40px;line-height:1.1;font-weight:800;letter-spacing:-.02em;color:var(--green)">3 von 5</span><span style="font-size:14px;color:var(--body)">Themen sicher gelernt</span></div>
+<div class="ph-card" style="display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;flex-direction:column;gap:4px"><div style="display:flex;justify-content:space-between;font-size:14px;font-weight:700"><span>Bank &amp; TAN</span><span class="ms" style="font-size:18px;color:var(--green)">check</span></div><div class="ph-line"><div style="width:100%"></div></div></div>
+<div style="display:flex;flex-direction:column;gap:4px"><div style="display:flex;justify-content:space-between;font-size:14px;font-weight:700"><span>Enkeltrick</span><span style="color:var(--slate)">3/4</span></div><div class="ph-line"><div style="width:75%"></div></div></div>
+<div style="display:flex;flex-direction:column;gap:4px"><div style="display:flex;justify-content:space-between;font-size:14px;font-weight:700"><span>Schockanruf</span><span style="color:var(--slate)">1/4</span></div><div class="ph-line"><div style="width:25%"></div></div></div>
+</div>
+<div style="background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;align-items:center;gap:10px;font-size:14px"><span class="ms" style="font-size:22px;color:var(--green)">key</span>Codewort aktiv</div>
+<div style="margin-top:auto;font-size:13px;color:var(--slate)">Letztes Quiz: heute, 9:14 Uhr</div>
+</div>
+</div>
+</div>
+<figcaption style="font-size:15px;color:var(--slate)">Beispielansicht</figcaption>
+</figure>
+<ul class="facts">
+<li><span class="ms" aria-hidden="true" style="font-size:24px;color:var(--green)">schedule</span>Einrichtung in 5 Minuten</li>
+<li><span class="ms" aria-hidden="true" style="font-size:24px;color:var(--green)">timer</span>5 Minuten Quiz am Tag</li>
+<li><span class="ms" aria-hidden="true" style="font-size:24px;color:var(--green)">visibility_off</span>Keine Überwachung</li>
+</ul>
+</div>
+</section>
+
+<!-- Quiz im App-Design (Senior-Quiz), danach Auswertung wie in der Angehörigen-Übersicht -->
+<section class="quiz-sec" id="quiz" aria-labelledby="quiz-h">
+<div class="wrap">
+<div class="qz-head">
+<span class="qz-eyebrow">Selber probieren</span>
+<h2 class="qz-h" id="quiz-h">Würdest du diesen Betrugsversuch erkennen?</h2>
+<p class="qz-lead">Teste dich selbst mit 5 Fragen zum Enkeltrick, genau so, wie man in SchutzEngel übt. Am Ende siehst du deine Auswertung so, wie Angehörige sie in der App sehen.</p>
+</div>
+
+<div class="se-app" id="qz-app">
+<!-- Frage (QuestionScreen) -->
+<div class="se-view se-q" id="qz-question">
+<div class="se-pbar">
+<div class="se-pbar-track" role="progressbar" id="qz-pbar" aria-label="Fortschritt in dieser Runde" aria-valuemin="0" aria-valuemax="5" aria-valuenow="1" aria-valuetext="Frage 1 von 5"><div class="se-pbar-fill" id="qz-pfill" style="width:20%"></div></div>
+<span class="se-pbar-count" id="qz-count" aria-hidden="true">1/5</span>
+</div>
+<p class="se-pos" id="qz-pos">Frage 1 von 5</p>
+<div class="se-statement">
+<span class="se-kicker">Welche Antwort stimmt?</span>
+<h3 class="se-prompt" id="qz-prompt" tabindex="-1"></h3>
+</div>
+<div class="se-opts" role="group" aria-labelledby="qz-prompt" id="qz-opts"></div>
+<button type="button" class="se-textbtn" id="qz-hint-btn" aria-expanded="false" aria-controls="qz-hint">Hinweis anzeigen</button>
+<div class="se-infonote" id="qz-hint" tabindex="-1" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color:var(--se-accent)"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.5 1.1 1.3 1.1 2.2v.5h5V16c0-.9.4-1.7 1.1-2.2A6 6 0 0 0 12 3z"/></svg><p id="qz-hint-t"></p></div>
+</div>
+
+<!-- Rückmeldung (AnswerFeedbackScreen) -->
+<div class="se-view se-fb" id="qz-feedback" hidden>
+<div aria-live="polite" class="se-view" style="gap:var(--se-l)">
+<h3 class="se-fb-head" id="qz-fb-head" tabindex="-1"></h3>
+<p class="se-fb-note" id="qz-fb-note" hidden></p>
+<div class="se-tcard"><span class="se-tcard-bar" id="qz-fb-bar" aria-hidden="true"></span><div class="se-tcard-body"><p class="se-correct" id="qz-fb-correct" hidden></p><p id="qz-fb-text"></p></div></div>
+</div>
+<button type="button" class="se-primary" id="qz-next"></button>
+</div>
+
+<!-- Auswertung (TourPreviewFamilyOverview, ohne Tab-Leiste und Titel) -->
+<div class="se-view se-fam" id="qz-result" hidden></div>
+</div>
+
+<div class="qz-outro">
+<p>Genau solche Situationen könnt ihr mit SchutzEngel trainieren.</p>
+<a href="#">SchutzEngel ausprobieren</a>
+</div>
+</div>
+</section>
+
+<!-- Vergleich -->
+<section class="sec" aria-labelledby="cmp-h">
+<div class="narrow stack" style="max-width:900px">
+<h2 class="sec-h" id="cmp-h">SchutzEngel im Vergleich zu üblichen Wegen gegen Betrug</h2>
+<div class="tbl-wrap">
+<table class="tbl">
+<caption class="sr">Vergleich: Seminar, Überwachungs-App und SchutzEngel</caption>
+<thead><tr><td style="background:var(--soft)"></td><th scope="col">Seminar</th><th scope="col">Über&shy;wachungs-App<small>z. B. Anruf&shy;blocker, Konto-Überwachung</small></th><th scope="col" class="se">Schutz&shy;Engel</th></tr></thead>
+<tbody>
+<tr><th scope="row">5 Minuten am Tag, von zu Hause</th><td class="no">–<span class="sr">Nein</span></td><td class="yes"><span class="ms fill" aria-hidden="true">check_circle</span><span class="sr">Ja</span></td><td class="se yes"><span class="ms fill" aria-hidden="true">check_circle</span><span class="sr">Ja</span></td></tr>
+<tr><th scope="row">Wissen bleibt durch tägliches Üben</th><td class="no">–<span class="sr">Nein</span></td><td class="no">–<span class="sr">Nein</span></td><td class="se yes"><span class="ms fill" aria-hidden="true">check_circle</span><span class="sr">Ja</span></td></tr>
+<tr><th scope="row">Eltern bleiben selbstständig</th><td class="yes"><span class="ms fill" aria-hidden="true">check_circle</span><span class="sr">Ja</span></td><td class="no">–<span class="sr">Nein</span></td><td class="se yes"><span class="ms fill" aria-hidden="true">check_circle</span><span class="sr">Ja</span></td></tr>
+<tr><th scope="row">Kein Eingriff in Anrufe oder Konten</th><td class="yes"><span class="ms fill" aria-hidden="true">check_circle</span><span class="sr">Ja</span></td><td class="no">–<span class="sr">Nein</span></td><td class="se yes"><span class="ms fill" aria-hidden="true">check_circle</span><span class="sr">Ja</span></td></tr>
+<tr><th scope="row">Lernstand jederzeit im Dashboard auf Ihrem Handy</th><td class="no">–<span class="sr">Nein</span></td><td class="no">–<span class="sr">Nein</span></td><td class="se yes"><span class="ms fill" aria-hidden="true">check_circle</span><span class="sr">Ja</span></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<!-- Datenschutz auf einen Blick -->
+<section class="sec" aria-labelledby="priv-h" style="padding-top:0">
+<div class="narrow stack" style="max-width:900px">
+<div class="card connect">
+<div style="display:flex;align-items:center;gap:14px">
+<span style="width:56px;height:56px;border-radius:999px;background:#e8f5e9;display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="ms" aria-hidden="true" style="font-size:34px;color:var(--green)">shield_lock</span></span>
+<h2 id="priv-h" style="margin:0;font-size:28px;font-weight:800">Datenschutz auf einen Blick</h2>
+</div>
+<p class="p">Ihre Eltern behalten das Sagen. Wer was sieht und entscheidet:</p>
+<div class="grid3 priv">
+<div><span class="ms" aria-hidden="true" style="font-size:36px;color:var(--green)">visibility</span><span style="font-size:20px;font-weight:800">Was Sie sehen</span>
+<ul><li><span class="ms" aria-hidden="true">check</span>Lernstand und Codewort</li><li><span class="ms" aria-hidden="true">check</span>Standort, nur mit Erlaubnis</li></ul></div>
+<div><span class="ms" aria-hidden="true" style="font-size:36px;color:var(--green)">family_restroom</span><span style="font-size:20px;font-weight:800">Was nur Ihre Eltern entscheiden</span>
+<ul><li><span class="ms" aria-hidden="true">check</span>Ob der Standort geteilt wird</li><li><span class="ms" aria-hidden="true">check</span>Wie das Codewort lautet</li></ul></div>
+<div class="never"><span class="ms" aria-hidden="true" style="font-size:36px;color:#ba1a1a">block</span><span style="font-size:20px;font-weight:800">Was wir nie tun</span>
+<ul><li><span class="ms" aria-hidden="true">close</span>Daten verkaufen</li><li><span class="ms" aria-hidden="true">close</span>Konten überwachen</li><li><span class="ms" aria-hidden="true">close</span>Anrufe mitschneiden</li></ul></div>
+</div>
+<p class="muted" style="margin:0;font-size:17px">Löschung Ihrer Daten jederzeit möglich. Mehr in der <a href="/datenschutz" style="font-weight:700">Datenschutzerklärung</a> und im <a href="/app-datenschutz" style="font-weight:700">App-Datenschutz</a>.</p>
+</div>
+</div>
+</section>
+
+<!-- Über uns -->
+<section class="sec" aria-labelledby="about-h" style="padding-top:0">
+<div class="narrow stack" style="max-width:900px">
+<h2 class="sec-h" id="about-h">Über uns</h2>
+<figure class="card founder" style="margin:0">
+<span class="avatar" aria-hidden="true">M</span>
+<div class="stack" style="flex:1 1 300px;gap:16px">
+<blockquote>„Mich macht es wütend, dass Betrüger ausgerechnet das Vertrauen und die Hilfsbereitschaft älterer Menschen ausnutzen. Und die üblichen Antworten darauf, also Seminare, Kontrolle und Sperren, nehmen ihnen genau das, worauf sie stolz sind: ihre Selbstständigkeit. Deshalb baue ich, Moritz, 19, das Gegenteil: Wissen, das in die Hosentasche passt.“</blockquote>
+<figcaption style="font-size:18px;font-weight:800">Moritz Kurscheid, Gründer</figcaption>
+</div>
+</figure>
+</div>
+</section>
+
+<!-- Schluss -->
+<section class="sec final" aria-labelledby="end-h">
+<div class="narrow stack" style="max-width:760px">
+<h2 class="sec-h" id="end-h">Vorsicht ist besser als Nachsicht.</h2>
+<p class="sec-lead">Starten Sie heute: kostenlos für iPhone, Android folgt bald.</p>
+<div class="platforms">
+<a class="pbtn ios" href="#iphone"><span class="tile"><span class="ms" aria-hidden="true" style="font-size:30px;color:#000">phone_iphone</span></span><span class="txt"><small>Für iPhone</small><strong>Jetzt herunterladen</strong></span><span class="ms" aria-hidden="true" style="font-size:26px">arrow_forward</span></a>
+<a class="pbtn android" href="#android"><span class="tile"><span class="ms" aria-hidden="true" style="font-size:30px;color:#fff">android</span></span><span class="txt"><small style="color:var(--body)">Für Android</small><strong>Coming soon</strong></span><span class="badge-soon">Benachrichtigen</span></a>
+</div>
+</div>
+</section>
 </section>
 
 <!-- ============ IPHONE ============ -->
@@ -360,7 +804,8 @@ footer nav button:hover{color:var(--green)}
       document.getElementById('v-' + k).classList.toggle('on', k === v);
     });
     document.title = v === 'iphone' ? 'SchutzEngel aufs iPhone holen' : v === 'android' ? 'SchutzEngel für Android – bald verfügbar' : 'SchutzEngel – Ihre Eltern fit gegen Telefonbetrug';
-    window.scrollTo(0, 0);
+    var target = v === 'start' && h ? document.getElementById(h) : null;
+    if (target) target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); else window.scrollTo(0, 0);
     if (v === 'start' && !trackerStarted) { trackerStarted = true; startTracker(); }
   }
   window.addEventListener('hashchange', route);
@@ -431,6 +876,291 @@ footer nav button:hover{color:var(--green)}
       .catch(function () { document.getElementById('net-err').hidden = false; })
       .then(function () { sending = false; btn.disabled = false; });
   });
+
+  /* Schnell gefragt */
+  var QAS = [
+    { q: 'Für wen ist das?', a: 'Für Sie, wenn Ihre Mutter, Ihr Vater oder Ihre Großeltern allein telefonieren und Sie nicht immer da sein können. Sie richten die App ein, Ihre Eltern nutzen sie.' },
+    { q: 'Was macht die App?', a: 'Ihre Eltern spielen täglich ein kurzes Quiz zu echten Maschen wie Enkeltrick oder Schockanruf. Sie sehen im Dashboard, wie weit sie sind.' },
+    { q: 'Überwacht das meine Eltern?', a: 'Nein. SchutzEngel liest keine Anrufe, Nachrichten oder Konten. Sie sehen nur den Lernstand. Den Standort nur, wenn Ihre Eltern es erlauben.' },
+    { q: 'Muss meine Mutter etwas Technisches können?', a: 'Nein. Die Einrichtung erledigen Sie über Ihr eigenes Handy. Ihre Mutter muss die App nur herunterladen, und dabei können Sie ihr bei Bedarf helfen. Die App selbst ist bewusst schlicht aufgebaut: daumengroße Knöpfe, große Schrift und kein langes Scrollen.' },
+    { q: 'Was kostet es?', a: 'Die Beta ist kostenlos. Sie laden SchutzEngel über Apples TestFlight herunter und können jederzeit wieder aufhören.' },
+    { q: 'Läuft das auf jedem Smartphone?', a: 'Auf dem iPhone können Sie schon heute starten. Die Android-Version ist in Arbeit: Tragen Sie sich ein, dann sagen wir Ihnen Bescheid, sobald es losgeht.' },
+    { q: 'Wann geht’s los?', a: 'Jetzt! Für iPhone gibt es SchutzEngel bereits als kostenlose Beta über TestFlight. Android folgt bald.' }
+  ];
+  var qaToggle = document.getElementById('qa-toggle'), qaList = document.getElementById('qa-list'),
+      qaAns = document.getElementById('qa-answer'), qaBtns = [];
+  function qaMenu(open) {
+    qaToggle.setAttribute('aria-expanded', String(open));
+    document.getElementById('qa-icon').textContent = open ? 'close' : 'menu';
+    qaList.hidden = !open;
+  }
+  function qaShow(i) {
+    var same = !qaAns.hidden && qaBtns[i].getAttribute('aria-pressed') === 'true';
+    qaBtns.forEach(function (b, k) { b.setAttribute('aria-pressed', String(!same && k === i)); });
+    if (same) { qaAns.hidden = true; return; }
+    document.getElementById('qa-title').textContent = QAS[i].q;
+    document.getElementById('qa-text').textContent = QAS[i].a;
+    qaAns.hidden = false;
+  }
+  QAS.forEach(function (item, i) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'qa-q'; b.textContent = item.q; b.setAttribute('aria-pressed', 'false');
+    b.addEventListener('click', function () { qaShow(i); });
+    qaList.appendChild(b); qaBtns.push(b);
+  });
+  qaToggle.addEventListener('click', function () { qaMenu(qaList.hidden); });
+  document.getElementById('qa-close').addEventListener('click', function () {
+    qaAns.hidden = true;
+    qaBtns.forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+  });
+
+  /* Quiz im App-Design: Ablauf wie RoundViewModel/QuestionScreen der App (Frage -> Rückmeldung an Ort
+     und Stelle -> weiter), am Ende die Auswertung im Look der Angehörigen-Übersicht. */
+  var QUESTIONS = [
+    { q: 'Ein Anrufer sagt: „Rate mal, wer hier ist!“ Was ist die cleverste Reaktion?',
+      a: ['Vorsichtig einen Namen raten, um höflich zu sein', 'Den Namen nicht nennen und stattdessen sagen: „Sag du mir, wer du bist“', 'Sofort auflegen, ohne etwas zu sagen', 'Fragen, ob es um Geld geht'],
+      correct: 1, hint: 'Wer rät, gibt dem Betrüger etwas in die Hand.', right: 'Genau so!', wrong: 'Fast, aber Falle!',
+      explain: 'Wer einen Namen rät, liefert den Betrügern die Identität auf dem Silbertablett. Ab da spielen sie den Enkel, die Nichte oder den Neffen. Auflegen ist auch okay, aber die stärkste Reaktion ist, den Spieß umzudrehen.',
+      topic: '„Rate mal, wer hier ist“' },
+    { q: 'Der „Enkel“ sagt, seine Handynummer sei neu, weil das alte Handy kaputt ist. Was ist der sicherste nächste Schritt?',
+      a: ['Die neue Nummer speichern und zurückrufen', 'Ihn nach einem Foto der neuen Nummer fragen', 'Auflegen und die alte, bekannte Nummer oder einen anderen Verwandten anrufen', 'Ihn nach dem Geburtsdatum fragen'],
+      correct: 2, hint: 'Vertraue nur Nummern, die du schon vorher hattest.', right: 'Sauber erkannt!', wrong: 'Genau das wollen sie.',
+      explain: 'Die „neue Nummer“-Story ist ein Klassiker. Nur der Rückruf auf eine Nummer, die DU schon kennst, oder ein Anruf bei anderen Verwandten entlarvt den Betrug. Geburtsdaten findet man oft online.',
+      topic: 'Angeblich neue Handynummer' },
+    { q: 'Der Anrufer braucht dringend 20.000 € für ein Auto, das er morgen nicht mehr kriegt. Er sagt: „Bitte erzähl niemandem was, es ist peinlich.“ Was ist hier das größte Alarmsignal?',
+      a: ['Die Höhe des Betrags', 'Dass es um ein Auto geht', 'Die Kombination aus Zeitdruck und Geheimhaltung', 'Dass der Anrufer „peinlich“ sagt'],
+      correct: 2, hint: 'Was verhindert, dass du nachdenkst oder jemanden fragst?', right: 'Volltreffer!', wrong: 'Nicht ganz.',
+      explain: 'Zeitdruck plus Geheimhaltung ist das Herzstück der Masche. Die Opfer sollen keine Zeit zum Nachdenken haben und niemanden fragen können. Der konkrete Grund (Auto, Wohnung, Unfall) wechselt ständig.',
+      topic: 'Zeitdruck und Geheimhaltung' },
+    { q: 'Es klingelt an der Tür: Ein Mann sagt, er sei ein Bekannter des Enkels und komme das Geld „abholen“. Die Oma hat von der Bank schon alles abgehoben. Was sollte sie tun?',
+      a: ['Geld übergeben, aber eine Quittung verlangen', 'Nichts übergeben, Tür zu und die Polizei über 110 rufen', 'Den Enkel anrufen, während der Abholer wartet', 'Das Geld im Briefkasten hinterlegen'],
+      correct: 1, hint: 'Was würde ein echter Enkel nie tun?', right: 'Richtig!', wrong: 'Autsch, so nicht.',
+      explain: 'Echte Enkel schicken niemals Fremde zum Geldabholen. Die Polizei bittet man genau in so einem Moment um Hilfe, denn oft lassen sich die Abholer sogar noch festnehmen. Eine Quittung bringt nichts, das Geld ist weg.',
+      topic: 'Geldabholer an der Tür' },
+    { q: 'Warum sind gerade Menschen mit einem eingetragenen Vornamen im Telefonbuch, wie „Gertrud“ oder „Helmut“, ein beliebtes Ziel?',
+      a: ['Weil sie angeblich mehr Geld haben', 'Weil altmodische Vornamen auf eine ältere Generation hindeuten', 'Weil sie häufiger zu Hause sind', 'Weil sie ihre Nummer öffentlich ändern'],
+      correct: 1, hint: 'Denk an Vornamen, die es heute kaum noch gibt.', right: 'Gut gedacht!', wrong: 'Überraschend, oder?',
+      explain: 'Betrüger suchen in Verzeichnissen gezielt nach Vornamen, die typisch für ältere Jahrgänge sind. Tipp: Beim Telefonbucheintrag nur Initiale statt Vorname verwenden oder den Eintrag ganz löschen lassen.',
+      topic: 'Vornamen im Telefonbuch' }
+  ];
+  var LETTERS = ['A', 'B', 'C', 'D'];
+  var WA_TEXT = 'Ich hab gerade das Enkeltrick-Quiz gemacht: 5 knifflige Fragen. Bist du wirklich sicher? Probier es mal aus: https://schutzengel.info/#quiz';
+  var SENIOR = 'Mama';
+  var WEEKDAYS = [['Mo', 'Montag'], ['Di', 'Dienstag'], ['Mi', 'Mittwoch'], ['Do', 'Donnerstag'], ['Fr', 'Freitag'], ['Sa', 'Samstag'], ['So', 'Sonntag']];
+  var $ = function (id) { return document.getElementById(id); };
+  var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+
+  /* Zeichen: SEGlyph (viewBox 24, Strich) und SEResultSymbol (viewBox 56, Fläche + weißes Zeichen) */
+  function glyph(paths, size, stroke) {
+    return '<svg viewBox="0 0 24 24" width="' + size + '" height="' + size + '" fill="none" stroke="currentColor" stroke-width="' + (stroke || 2) + '" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+      paths.map(function (d) { return '<path d="' + d + '"/>'; }).join('') + '</svg>';
+  }
+  var G = {
+    arrowRight: ['M5 12h14', 'M13 6l6 6-6 6'],
+    flag: ['M5 21V4', 'M5 4h11l-2 4 2 4H5'],
+    retry: ['M20 11a8 8 0 1 0-2.3 5.7', 'M20 4v7h-7'],
+    share: ['M12 3v12', 'M8 7l4-4 4 4', 'M7 10H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-1'],
+    check: ['m5 12.5 4.5 4.5L19 7.5'],
+    link: ['M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1.2 1.2', 'M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1.2-1.2']
+  };
+  function resultSymbol(kind, tint) {
+    var body = kind === 'check'
+      ? '<path d="M0 28a28 28 0 1 0 56 0a28 28 0 1 0-56 0" fill="' + tint + '"/><path d="M16 29l8 8 16-17" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>'
+      : '<path d="M28 4L54 50H2z" fill="' + tint + '" stroke="' + tint + '" stroke-width="4" stroke-linejoin="round"/><path d="M28 21v14" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/><circle cx="28" cy="43" r="3" fill="#fff"/>';
+    return '<svg viewBox="0 0 56 56" aria-hidden="true">' + body + '</svg>';
+  }
+
+  /* Lob und Zuspruch wie FeedbackNote der App (Anrede „du“ wie im Rahmen) */
+  function feedbackNote(order) {
+    var last = order[order.length - 1];
+    if (!last) return 'Kein Problem – genau dafür üben wir.';
+    var run = 0;
+    for (var i = order.length - 1; i >= 0 && order[i]; i--) run++;
+    if (run === 3) return 'Drei in Folge erkannt.';
+    if (run === 5) return 'Fünf in Folge – du erkennst die Maschen sicher.';
+    if (run === 1 && order.length > 1) return 'Gut gemacht – diesmal hast du es erkannt.';
+    return null;
+  }
+
+  var qs = { step: 0, results: [], chosen: null };
+  var busy = false;
+
+  function show(from, to, done) {
+    if (reduce) { from.hidden = true; to.hidden = false; done(); return; }
+    busy = true;
+    from.classList.add('se-fade-out');
+    setTimeout(function () {
+      from.hidden = true; from.classList.remove('se-fade-out');
+      to.hidden = false; to.classList.remove('se-fade'); void to.offsetWidth; to.classList.add('se-fade');
+      busy = false; done();
+    }, 300);
+  }
+
+  function keepInView() {
+    var app = $('qz-app'), top = app.getBoundingClientRect().top;
+    if (top < 0 || top > window.innerHeight * 0.6) app.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+  }
+
+  function renderQuestion() {
+    var q = QUESTIONS[qs.step], n = QUESTIONS.length, pos = qs.step + 1;
+    $('qz-pfill').style.width = (pos / n * 100) + '%';
+    $('qz-pbar').setAttribute('aria-valuenow', String(pos));
+    $('qz-pbar').setAttribute('aria-valuemax', String(n));
+    $('qz-pbar').setAttribute('aria-valuetext', 'Frage ' + pos + ' von ' + n);
+    $('qz-count').textContent = pos + '/' + n;
+    $('qz-pos').textContent = 'Frage ' + pos + ' von ' + n;
+    $('qz-prompt').textContent = q.q;
+    var box = $('qz-opts'); box.innerHTML = '';
+    q.a.forEach(function (text, i) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'se-opt'; b.dataset.state = 'open';
+      b.innerHTML = '<span class="se-letter" aria-hidden="true">' + LETTERS[i] + '</span>' +
+        '<span class="se-opt-mark" aria-hidden="true"></span>' +
+        '<span class="se-opt-text"></span><span class="se-opt-note"></span>';
+      b.querySelector('.se-opt-text').textContent = text;
+      b.addEventListener('click', function () { pickAnswer(i); });
+      box.appendChild(b);
+    });
+    $('qz-hint-t').textContent = 'Hinweis: ' + q.hint;
+    $('qz-hint').hidden = true; $('qz-hint-btn').hidden = false; $('qz-hint-btn').setAttribute('aria-expanded', 'false');
+    qs.chosen = null;
+  }
+
+  function pickAnswer(i) {
+    if (qs.chosen !== null || busy) return;
+    var q = QUESTIONS[qs.step], ok = i === q.correct;
+    qs.chosen = i; qs.results.push(ok);
+    Array.prototype.forEach.call($('qz-opts').children, function (b, k) {
+      var state = k === q.correct ? 'correct' : k === i ? 'wrong' : 'dimmed';
+      b.dataset.state = state;
+      b.setAttribute('aria-disabled', 'true');
+      if (state === 'correct' || state === 'wrong') {
+        b.querySelector('.se-opt-mark').innerHTML = resultSymbol(state === 'correct' ? 'check' : 'warning', state === 'correct' ? 'var(--se-accent)' : 'var(--se-alert)');
+        b.querySelector('.se-opt-note').textContent = state === 'correct' ? 'Richtige Antwort' : 'Deine Antwort';
+      }
+    });
+    var tint = ok ? 'var(--se-accent)' : 'var(--se-alert)';
+    var head = $('qz-fb-head');
+    head.style.color = tint;
+    head.innerHTML = resultSymbol(ok ? 'check' : 'warning', tint) + '<span></span>';
+    head.lastChild.textContent = ok ? q.right : q.wrong;
+    var note = feedbackNote(qs.results);
+    $('qz-fb-note').hidden = !note; $('qz-fb-note').textContent = note || '';
+    $('qz-fb-bar').style.background = tint;
+    $('qz-fb-correct').hidden = ok;
+    $('qz-fb-correct').textContent = ok ? '' : 'Die richtige Antwort ist: ' + q.a[q.correct];
+    $('qz-fb-text').textContent = q.explain;
+    var last = qs.step === QUESTIONS.length - 1;
+    $('qz-next').innerHTML = glyph(last ? G.flag : G.arrowRight, 24, 2.2) + '<span>' + (last ? 'Runde beenden' : 'Weiter') + '</span>';
+    show($('qz-question'), $('qz-feedback'), function () { keepInView(); head.focus({ preventScroll: true }); });
+  }
+
+  function next() {
+    if (busy) return;
+    qs.step++;
+    if (qs.step < QUESTIONS.length) {
+      renderQuestion();
+      show($('qz-feedback'), $('qz-question'), function () { keepInView(); $('qz-prompt').focus({ preventScroll: true }); });
+      return;
+    }
+    renderResult();
+    show($('qz-feedback'), $('qz-result'), function () {
+      keepInView();
+      $('qz-greet').focus({ preventScroll: true });
+      requestAnimationFrame(function () { requestAnimationFrame(fillResult); });
+    });
+  }
+
+  /* Auswertung: echte Ergebnisse dieser Runde, Tagesziel = 5 Fragen */
+  var res = null;
+  function renderResult() {
+    var n = QUESTIONS.length, right = qs.results.filter(Boolean).length;
+    var progress = right / n, reached = right === n, pct = Math.round(progress * 100);
+    var today = (new Date().getDay() + 6) % 7, hour = new Date().getHours();
+    var greeting = hour >= 4 && hour < 11 ? 'Guten Morgen' : hour >= 11 && hour < 18 ? 'Guten Tag' : 'Guten Abend';
+    res = { progress: progress, reached: reached };
+    var C = 2 * Math.PI * 15.5;
+    var week = WEEKDAYS.map(function (d, i) {
+      var dot;
+      if (i === today && reached) dot = '<span class="se-dot goal" style="color:var(--se-on-accent)">' + glyph(G.check, 16, 2.8) + '</span>';
+      else if (i === today) dot = '<span class="se-dot"><svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="15.5" fill="none" stroke="var(--se-divider)" stroke-width="3"/><circle class="arc" cx="18" cy="18" r="15.5" fill="none" stroke="var(--se-accent)" stroke-width="3" stroke-linecap="round" stroke-dasharray="' + C.toFixed(2) + '" stroke-dashoffset="' + C.toFixed(2) + '" data-target="' + (C * (1 - progress)).toFixed(2) + '" transform="rotate(-90 18 18)"' + (progress === 0 ? ' visibility="hidden"' : '') + '/></svg></span>';
+      else dot = '<span class="se-dot empty"></span>';
+      return '<div class="se-day' + (i === today ? ' today' : '') + '">' + dot + '<span>' + d[0] + '</span></div>';
+    }).join('');
+    var weekSay = 'Diese Woche: ' + WEEKDAYS.map(function (d, i) {
+      return d[1] + ', ' + (i < today ? 'nicht geübt' : i > today ? 'noch offen' : reached ? 'heute, Tagesziel erreicht' : 'heute, ' + pct + ' Prozent');
+    }).join('; ') + '.';
+    var summary = right + ' von ' + n + ' Fragen richtig erkannt';
+    var cardSay = 'Serie: 1 Tag. Fragen heute: ' + right + ' von ' + n + ', ' + pct + ' Prozent. ' + (reached ? 'Tagesziel geschafft.' : summary + '.');
+    var rows = QUESTIONS.map(function (q, i) {
+      var ok = qs.results[i];
+      return '<li>' + resultSymbol(ok ? 'check' : 'warning', ok ? 'var(--se-accent)' : 'var(--se-alert)') +
+        '<span class="t">' + esc(q.topic) + '</span><span class="se-state ' + (ok ? 'ok' : 'bad') + '">' + (ok ? 'sicher' : 'üben') + '</span></li>';
+    }).join('');
+    var wa = 'https://wa.me/?text=' + encodeURIComponent(WA_TEXT);
+    $('qz-result').innerHTML =
+      '<div class="se-greet"><h3 id="qz-greet" tabindex="-1">' + greeting + '</h3><p>Schön, dass du nach ' + SENIOR + ' siehst.</p></div>' +
+      '<div class="se-hero">' +
+        '<span class="se-mono" aria-hidden="true"><svg viewBox="0 0 100 100"><path d="M47,3 C76,0 99,21 97,50 C95,79 74,99 47,97 C19,95 1,75 3,47 C5,21 21,5 47,3 Z" fill="var(--se-accent-soft)"/></svg><span>' + SENIOR.charAt(0) + '</span></span>' +
+        '<div class="se-hero-txt"><p class="se-name">' + SENIOR + '</p>' +
+        '<span class="se-chip">' + glyph(G.link, 18, 1.9) + '<span>Verbunden seit heute</span></span>' +
+        '<span class="se-example">Beispielansicht mit deinen Antworten</span></div>' +
+      '</div>' +
+      '<div class="se-learn" role="group" aria-label="Lernstand. ' + esc(cardSay) + '">' +
+        '<div class="se-learn-head" aria-hidden="true">' +
+          '<span class="se-flame' + (reached && !reduce ? ' burning' : '') + '"><svg viewBox="0 0 24 28"><path fill="var(--se-flame)" d="M12 1.5C13 6 19.5 9 19.5 17a7.5 7.5 0 0 1-15 0c0-3.2 1.6-5.6 3.4-7.4.4 2 1.4 3 2.6 3.4C10 9 10.2 4.5 12 1.5z"/><path fill="var(--se-warm-soft)" d="M12 15c.8 2 3.2 2.8 3.2 5.2a3.2 3.2 0 0 1-6.4 0C8.8 18.4 11 17.4 12 15z"/></svg></span>' +
+          '<div class="se-series"><span class="se-eyebrow">Serie</span><span class="se-series-line"><span class="se-series-num">1</span><span class="se-unit">Tag</span></span></div>' +
+          '<span class="se-angel"><svg viewBox="0 0 40 40" fill="none" stroke="var(--se-angel-line)" stroke-width="1.6" stroke-linejoin="round"><ellipse cx="20" cy="6.5" rx="5.5" ry="1.9"/><circle cx="20" cy="13" r="3.8"/><path d="M20 18.2c-3.8 0-5.8 3.8-5.8 9.6V32h11.6v-4.2c0-5.8-2-9.6-5.8-9.6z"/><path d="M14.6 20.6C9.4 17.4 4.4 18.2 3 22c3-.5 5 1 6 3-2.6 0-4.6 1.6-5 4 4-1 7.4 0 10 2z"/><path d="M25.4 20.6C30.6 17.4 35.6 18.2 37 22c-3-.5-5 1-6 3 2.6 0 4.6 1.6 5 4-4-1-7.4 0-10 2z"/></svg></span>' +
+        '</div>' +
+        '<div class="se-rule" aria-hidden="true"></div>' +
+        '<div class="se-week" role="img" aria-label="' + esc(weekSay) + '">' + week + '</div>' +
+        '<div class="se-qs" aria-hidden="true">' +
+          '<span class="se-eyebrow">Fragen heute</span>' +
+          '<div class="se-qs-line"><span class="se-qs-num"><b>' + right + '</b><span>/ ' + n + '</span></span><span class="se-pct' + (reached ? ' strong' : '') + '">' + pct + ' %</span></div>' +
+          '<div class="se-goalbar' + (reached ? ' reached' : '') + '"><div id="qz-goalfill"></div></div>' +
+          (reached
+            ? '<p class="se-detail done">' + glyph(G.check, 16, 2.8) + '<span>Tagesziel geschafft.</span></p>'
+            : '<p class="se-detail">' + summary + '</p>') +
+        '</div>' +
+      '</div>' +
+      '<div class="se-topics">' +
+        '<div class="se-topics-head"><span class="se-eyebrow">Heute gelernt</span><span>' + n + ' Themen</span></div>' +
+        '<ul>' + rows + '</ul>' +
+      '</div>' +
+      '<div class="se-actions">' +
+        '<a class="se-primary" href="' + wa + '" target="_blank" rel="noopener">' + glyph(G.share, 24, 2.2) + '<span>Mit Mama/Papa teilen</span></a>' +
+        '<button type="button" class="se-secondary" id="qz-again">' + glyph(G.retry, 22, 2) + '<span>Quiz nochmal spielen</span></button>' +
+      '</div>' +
+      '<div class="se-cta">' +
+        '<p>In SchutzEngel üben deine Eltern genau so, 5 Minuten täglich. Und du siehst ihren Lernstand wie hier.</p>' +
+        '<div class="platforms">' +
+          '<a class="pbtn ios" href="#iphone"><span class="tile"><span class="ms" aria-hidden="true" style="font-size:30px;color:#000">phone_iphone</span></span><span class="txt"><small>Für iPhone</small><strong>Jetzt herunterladen</strong></span><span class="ms" aria-hidden="true" style="font-size:26px">arrow_forward</span></a>' +
+          '<a class="pbtn android" href="#android"><span class="tile"><span class="ms" aria-hidden="true" style="font-size:30px;color:#fff">android</span></span><span class="txt"><small style="color:var(--body)">Für Android</small><strong>Coming soon</strong></span><span class="badge-soon">Benachrichtigen</span></a>' +
+        '</div>' +
+      '</div>';
+    $('qz-again').addEventListener('click', restart);
+  }
+
+  function fillResult() {
+    if (!res) return;
+    var fill = $('qz-goalfill'); if (fill) fill.style.width = (res.progress * 100) + '%';
+    var arc = document.querySelector('#qz-result .arc');
+    if (arc) arc.setAttribute('stroke-dashoffset', arc.getAttribute('data-target'));
+  }
+
+  function restart() {
+    if (busy) return;
+    qs = { step: 0, results: [], chosen: null };
+    renderQuestion();
+    show($('qz-result'), $('qz-question'), function () { keepInView(); $('qz-prompt').focus({ preventScroll: true }); });
+  }
+
+  $('qz-next').addEventListener('click', next);
+  $('qz-hint-btn').addEventListener('click', function () {
+    $('qz-hint').hidden = false; $('qz-hint-btn').hidden = true; $('qz-hint-btn').setAttribute('aria-expanded', 'true');
+    $('qz-hint').focus({ preventScroll: true });
+  });
+  renderQuestion();
 
   route();
 })();
