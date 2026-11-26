@@ -168,10 +168,11 @@ table.tbl{width:100%;border-collapse:collapse;font-size:17px}
 .tbl small{display:block;font-size:13px;font-weight:500;color:var(--body);margin-top:2px}
 .tbl thead .se small{color:#e8f5e9}
 .yes{color:var(--green)}.no{color:#8a8f89}
-.tbl.priv thead th{text-align:left}
-.tbl.priv td{text-align:left;font-weight:700;width:33.33%}
-.tbl.priv td .ms{vertical-align:-5px;margin-right:6px}
-.tbl.priv th.never{background:#ffeceb;color:#690005}
+.priv ul{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+.priv li{display:flex;align-items:flex-start;gap:8px;font-size:17px;font-weight:700;line-height:1.35}
+.priv li .ms{font-size:22px;color:var(--green)}
+.priv .never{background:#ffeceb}
+.priv .never li .ms{color:#ba1a1a}
 /* Über uns */
 .founder{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;padding:32px}
 .founder blockquote{margin:0;flex:1 1 300px;font-size:clamp(20px,2.2vw,24px);line-height:1.55;color:var(--ink)}
@@ -179,8 +180,7 @@ table.tbl{width:100%;border-collapse:collapse;font-size:17px}
 /* Schluss */
 .final{background:#e8f5e9}
 @media (max-width:640px){
-  #db{width:100%!important;max-width:320px}
-  .sec{padding:56px 0}
+    .sec{padding:56px 0}
   .tbl th,.tbl td{padding:12px 8px}
   table.tbl{font-size:15px}
   .tbl thead th{font-size:14px}
@@ -323,11 +323,11 @@ table.tbl{width:100%;border-collapse:collapse;font-size:17px}
 <div class="wrap stack">
 <div class="stack" style="gap:12px;max-width:760px">
 <h2 class="sec-h" id="quiz-h" style="color:#fff">Testen Sie die App</h2>
-<p class="sec-lead" style="color:#e5e2e1">So üben Ihre Eltern in SchutzEngel: kurze Fragen zu echten Maschen, jede mit Erklärung. Hier 5 Fragen zum Enkeltrick. Ihr Dashboard wertet jede Antwort live aus, so wie Sie es später für Ihre Eltern sehen.</p>
+<p class="sec-lead" style="color:#e5e2e1">So üben Ihre Eltern in SchutzEngel: kurze Fragen zu echten Maschen, jede mit Erklärung. Hier 5 Fragen zum Enkeltrick. In der App kommen täglich neue dazu, und Sie sehen den Fortschritt.</p>
 </div>
-<div style="display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start;justify-content:center">
+<div>
 
-<div class="quiz-box" style="flex:999 1 440px;min-width:0;max-width:680px">
+<div class="quiz-box" style="max-width:760px">
 <div id="qz-start" class="stack" style="gap:16px">
 <p style="margin:0;font-size:20px;line-height:1.5">5 Fragen, ca. 2 Minuten. Schaffen Sie alle?</p>
 <button type="button" class="btn-green" id="qz-go">Quiz starten<span class="ms" aria-hidden="true" style="font-size:26px">arrow_forward</span></button>
@@ -365,25 +365,6 @@ table.tbl{width:100%;border-collapse:collapse;font-size:17px}
 </div>
 </div>
 
-<!-- Live-Dashboard -->
-<div class="phone-col" style="flex:1 1 280px">
-<span class="phone-tag" style="background:var(--green)"><span class="ms" aria-hidden="true" style="font-size:20px;vertical-align:-3px">monitoring</span> Ihr Dashboard, live</span>
-<div class="phone" id="db" style="width:300px;height:auto;min-height:560px;gap:12px;color:var(--ink)" aria-label="Live-Dashboard: So sehen Sie den Lernstand" role="region">
-<div style="display:flex;align-items:center;gap:10px"><span style="width:40px;height:40px;border-radius:999px;background:var(--slate-bg);display:flex;align-items:center;justify-content:center;font-weight:800">M</span><div style="display:flex;flex-direction:column;flex-grow:1"><span style="font-size:13px;color:var(--slate);font-weight:700">LERNSTAND</span><span style="font-size:18px;font-weight:800">Mama</span></div><span id="db-live" style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:800;letter-spacing:.08em;color:var(--slate)"><i style="width:8px;height:8px;border-radius:999px;background:#bdbdbd" id="db-dot"></i><span id="db-state">WARTET</span></span></div>
-<div class="ph-card" style="display:flex;align-items:center;gap:14px">
-<svg width="72" height="72" viewBox="0 0 36 36" aria-hidden="true" style="flex-shrink:0;transform:rotate(-90deg)"><circle cx="18" cy="18" r="15.9" fill="none" stroke="#e5e2e1" stroke-width="3.6"/><circle id="db-ring" cx="18" cy="18" r="15.9" fill="none" stroke="#4caf50" stroke-width="3.6" stroke-linecap="round" stroke-dasharray="0 100" style="transition:stroke-dasharray .5s"/></svg>
-<div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:32px;line-height:1.05;font-weight:800;letter-spacing:-.02em;color:var(--green);white-space:nowrap" id="db-score">0 von 5</span><span style="font-size:14px;color:var(--body)" id="db-sub">Fallen sicher erkannt</span></div>
-</div>
-<div class="ph-card" style="display:flex;flex-direction:column;gap:2px;padding:8px 14px">
-<div style="font-size:13px;font-weight:800;letter-spacing:.06em;color:var(--slate);padding:6px 0">ENKELTRICK · HEUTE</div>
-<ul id="db-list" style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column"></ul>
-</div>
-<div id="db-tip" style="border-radius:12px;padding:12px;display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.4;background:var(--soft);border:1px solid var(--line)"><span class="ms" aria-hidden="true" style="font-size:22px;color:var(--slate)" id="db-tip-i">hourglass_empty</span><span id="db-tip-t">Sobald die erste Antwort kommt, sehen Sie hier, worüber Sie sprechen sollten.</span></div>
-<div style="margin-top:auto;font-size:13px;color:var(--slate)" id="db-last">Letztes Quiz: noch keins</div>
-</div>
-<span style="font-size:15px;color:#bfc4bd">Beispielansicht · Ihre Antworten bleiben auf diesem Gerät</span>
-</div>
-
 </div>
 </div>
 </section>
@@ -411,19 +392,22 @@ table.tbl{width:100%;border-collapse:collapse;font-size:17px}
 <!-- Datenschutz auf einen Blick -->
 <section class="sec" aria-labelledby="priv-h" style="padding-top:0">
 <div class="narrow stack" style="max-width:900px">
-<h2 class="sec-h" id="priv-h">Datenschutz auf einen Blick</h2>
-<p class="sec-lead">Ihre Eltern behalten das Sagen. Wer was sieht und entscheidet:</p>
-<div class="tbl-wrap">
-<table class="tbl priv">
-<thead><tr><th scope="col">Was Sie sehen</th><th scope="col">Was nur Ihre Eltern entscheiden</th><th scope="col" class="never">Was wir nie tun</th></tr></thead>
-<tbody>
-<tr><td><span class="ms yes" aria-hidden="true">check</span>Lernstand und Codewort</td><td><span class="ms yes" aria-hidden="true">check</span>Ob der Standort geteilt wird</td><td><span class="ms" aria-hidden="true" style="color:#ba1a1a">close</span>Daten verkaufen</td></tr>
-<tr><td><span class="ms yes" aria-hidden="true">check</span>Standort, nur mit Erlaubnis</td><td><span class="ms yes" aria-hidden="true">check</span>Wie das Codewort lautet</td><td><span class="ms" aria-hidden="true" style="color:#ba1a1a">close</span>Konten überwachen</td></tr>
-<tr><td></td><td></td><td><span class="ms" aria-hidden="true" style="color:#ba1a1a">close</span>Anrufe mitschneiden</td></tr>
-</tbody>
-</table>
+<div class="card connect">
+<div style="display:flex;align-items:center;gap:14px">
+<span style="width:56px;height:56px;border-radius:999px;background:#e8f5e9;display:flex;align-items:center;justify-content:center;flex-shrink:0"><span class="ms" aria-hidden="true" style="font-size:34px;color:var(--green)">shield_lock</span></span>
+<h2 id="priv-h" style="margin:0;font-size:28px;font-weight:800">Datenschutz auf einen Blick</h2>
 </div>
-<p style="margin:0;font-size:18px;color:var(--body)">Löschung Ihrer Daten jederzeit möglich. Mehr in der <a href="/datenschutz" style="font-weight:700">Datenschutzerklärung</a> und im <a href="/app-datenschutz" style="font-weight:700">App-Datenschutz</a>.</p>
+<p class="p">Ihre Eltern behalten das Sagen. Wer was sieht und entscheidet:</p>
+<div class="grid3 priv">
+<div><span class="ms" aria-hidden="true" style="font-size:36px;color:var(--green)">visibility</span><span style="font-size:20px;font-weight:800">Was Sie sehen</span>
+<ul><li><span class="ms" aria-hidden="true">check</span>Lernstand und Codewort</li><li><span class="ms" aria-hidden="true">check</span>Standort, nur mit Erlaubnis</li></ul></div>
+<div><span class="ms" aria-hidden="true" style="font-size:36px;color:var(--green)">family_restroom</span><span style="font-size:20px;font-weight:800">Was nur Ihre Eltern entscheiden</span>
+<ul><li><span class="ms" aria-hidden="true">check</span>Ob der Standort geteilt wird</li><li><span class="ms" aria-hidden="true">check</span>Wie das Codewort lautet</li></ul></div>
+<div class="never"><span class="ms" aria-hidden="true" style="font-size:36px;color:#ba1a1a">block</span><span style="font-size:20px;font-weight:800">Was wir nie tun</span>
+<ul><li><span class="ms" aria-hidden="true">close</span>Daten verkaufen</li><li><span class="ms" aria-hidden="true">close</span>Konten überwachen</li><li><span class="ms" aria-hidden="true">close</span>Anrufe mitschneiden</li></ul></div>
+</div>
+<p class="muted" style="margin:0;font-size:17px">Löschung Ihrer Daten jederzeit möglich. Mehr in der <a href="/datenschutz" style="font-weight:700">Datenschutzerklärung</a> und im <a href="/app-datenschutz" style="font-weight:700">App-Datenschutz</a>.</p>
+</div>
 </div>
 </section>
 
@@ -745,27 +729,23 @@ table.tbl{width:100%;border-collapse:collapse;font-size:17px}
       a: ['Vorsichtig einen Namen raten, um höflich zu sein', 'Den Namen nicht nennen und stattdessen sagen: „Sag du mir, wer du bist“', 'Sofort auflegen, ohne etwas zu sagen', 'Fragen, ob es um Geld geht'],
       correct: 1, hint: 'Wer rät, gibt dem Betrüger etwas in die Hand.', right: 'Genau so!', wrong: 'Fast, aber Falle!',
       explain: 'Wer einen Namen rät, liefert den Betrügern die Identität auf dem Silbertablett. Ab da spielen sie den Enkel, die Nichte oder den Neffen. Auflegen ist auch okay, aber die stärkste Reaktion ist, den Spieß umzudrehen.',
-      topic: '„Rate mal, wer hier ist“', tip: 'Üben Sie zusammen: Nie einen Namen raten, sondern fragen „Wer ist da?“' },
+      },
     { q: 'Der „Enkel“ sagt, seine Handynummer sei neu, weil das alte Handy kaputt ist. Was ist der sicherste nächste Schritt?',
       a: ['Die neue Nummer speichern und zurückrufen', 'Ihn nach einem Foto der neuen Nummer fragen', 'Auflegen und die alte, bekannte Nummer oder einen anderen Verwandten anrufen', 'Ihn nach dem Geburtsdatum fragen'],
       correct: 2, hint: 'Vertraue nur Nummern, die du schon vorher hattest.', right: 'Sauber erkannt!', wrong: 'Genau das wollen sie.',
-      explain: 'Die „neue Nummer“-Story ist ein Klassiker. Nur der Rückruf auf eine Nummer, die DU schon kennst, oder ein Anruf bei anderen Verwandten entlarvt den Betrug. Geburtsdaten findet man oft online.',
-      topic: 'Neue Handynummer', tip: 'Besprechen Sie: Nur auf Nummern zurückrufen, die schon vorher bekannt waren.' },
+      explain: 'Die „neue Nummer“-Story ist ein Klassiker. Nur der Rückruf auf eine Nummer, die DU schon kennst, oder ein Anruf bei anderen Verwandten entlarvt den Betrug. Geburtsdaten findet man oft online.' },
     { q: 'Der Anrufer braucht dringend 20.000 € für ein Auto, das er morgen nicht mehr kriegt. Er sagt: „Bitte erzähl niemandem was, es ist peinlich.“ Was ist hier das größte Alarmsignal?',
       a: ['Die Höhe des Betrags', 'Dass es um ein Auto geht', 'Die Kombination aus Zeitdruck und Geheimhaltung', 'Dass der Anrufer „peinlich“ sagt'],
       correct: 2, hint: 'Was verhindert, dass du nachdenkst oder jemanden fragst?', right: 'Volltreffer!', wrong: 'Nicht ganz.',
-      explain: 'Zeitdruck plus Geheimhaltung ist das Herzstück der Masche. Die Opfer sollen keine Zeit zum Nachdenken haben und niemanden fragen können. Der konkrete Grund (Auto, Wohnung, Unfall) wechselt ständig.',
-      topic: 'Zeitdruck + Geheimnis', tip: 'Besprechen Sie: Eile plus „Sag niemandem was“ heißt immer auflegen und Sie anrufen.' },
+      explain: 'Zeitdruck plus Geheimhaltung ist das Herzstück der Masche. Die Opfer sollen keine Zeit zum Nachdenken haben und niemanden fragen können. Der konkrete Grund (Auto, Wohnung, Unfall) wechselt ständig.' },
     { q: 'Es klingelt an der Tür: Ein Mann sagt, er sei ein Bekannter des Enkels und komme das Geld „abholen“. Die Oma hat von der Bank schon alles abgehoben. Was sollte sie tun?',
       a: ['Geld übergeben, aber eine Quittung verlangen', 'Nichts übergeben, Tür zu und die Polizei über 110 rufen', 'Den Enkel anrufen, während der Abholer wartet', 'Das Geld im Briefkasten hinterlegen'],
       correct: 1, hint: 'Was würde ein echter Enkel nie tun?', right: 'Richtig!', wrong: 'Autsch, so nicht.',
-      explain: 'Echte Enkel schicken niemals Fremde zum Geldabholen. Die Polizei bittet man genau in so einem Moment um Hilfe, denn oft lassen sich die Abholer sogar noch festnehmen. Eine Quittung bringt nichts, das Geld ist weg.',
-      topic: 'Fremder holt Geld ab', tip: 'Besprechen Sie: Nie Geld an Fremde an der Tür geben, sofort 110 rufen.' },
+      explain: 'Echte Enkel schicken niemals Fremde zum Geldabholen. Die Polizei bittet man genau in so einem Moment um Hilfe, denn oft lassen sich die Abholer sogar noch festnehmen. Eine Quittung bringt nichts, das Geld ist weg.' },
     { q: 'Warum sind gerade Menschen mit einem eingetragenen Vornamen im Telefonbuch, wie „Gertrud“ oder „Helmut“, ein beliebtes Ziel?',
       a: ['Weil sie angeblich mehr Geld haben', 'Weil altmodische Vornamen auf eine ältere Generation hindeuten', 'Weil sie häufiger zu Hause sind', 'Weil sie ihre Nummer öffentlich ändern'],
       correct: 1, hint: 'Denk an Vornamen, die es heute kaum noch gibt.', right: 'Gut gedacht!', wrong: 'Überraschend, oder?',
-      explain: 'Betrüger suchen in Verzeichnissen gezielt nach Vornamen, die typisch für ältere Jahrgänge sind. Tipp: Beim Telefonbucheintrag nur Initiale statt Vorname verwenden oder den Eintrag ganz löschen lassen.',
-      topic: 'Vorname im Telefonbuch', tip: 'Gemeinsam erledigen: Telefonbucheintrag auf Initiale ändern oder löschen lassen.' }
+      explain: 'Betrüger suchen in Verzeichnissen gezielt nach Vornamen, die typisch für ältere Jahrgänge sind. Tipp: Beim Telefonbucheintrag nur Initiale statt Vorname verwenden oder den Eintrag ganz löschen lassen.' }
   ];
   var LETTERS = ['A', 'B', 'C', 'D'];
   var WA_TEXT = 'Ich hab gerade das Enkeltrick-Quiz gemacht: 5 knifflige Fragen. Bist du wirklich sicher? Probier es mal aus: https://schutzengel.info/#quiz';
@@ -776,50 +756,6 @@ table.tbl{width:100%;border-collapse:collapse;font-size:17px}
     if (score === 5) return { title: 'Absolute Profi-Abwehr!', text: 'Jetzt Ihr Wissen weitergeben: Schicken Sie das Quiz an Mama, Papa, Oma oder Opa.' };
     if (score >= 3) return { title: 'Stark!', text: 'Ein, zwei Fallen waren fies. Genau deshalb lohnt es sich, das Quiz auch mit Ihrer Familie zu machen.' };
     return { title: 'Gut, dass Sie es jetzt wissen, nicht erst am Telefon.', text: 'Lesen Sie die Erklärungen nochmal durch und teilen Sie das Quiz mit Ihren Liebsten.' };
-  }
-
-  function renderDashboard() {
-    var right = qs.results.filter(function (r) { return r; }).length;
-    var done = qs.results.length, finished = done === QUESTIONS.length, started = $('qz-start').hidden;
-    $('db-score').textContent = right + ' von ' + QUESTIONS.length;
-    $('db-sub').textContent = finished ? 'Fallen sicher erkannt' : 'Fallen sicher erkannt · ' + done + ' beantwortet';
-    $('db-ring').setAttribute('stroke-dasharray', (right / QUESTIONS.length * 100).toFixed(1) + ' 100');
-    $('db-state').textContent = finished ? 'FERTIG' : started ? 'LIVE' : 'WARTET';
-    $('db-dot').style.background = started && !finished ? '#4caf50' : finished ? '#006e1c' : '#bdbdbd';
-    var list = $('db-list'); list.innerHTML = '';
-    QUESTIONS.forEach(function (q, i) {
-      var r = qs.results[i], current = started && !finished && i === done;
-      var icon = r === true ? 'check_circle' : r === false ? 'error' : current ? 'pending' : 'radio_button_unchecked';
-      var color = r === true ? '#006e1c' : r === false ? '#ba1a1a' : current ? '#526069' : '#bdbdbd';
-      var label = r === true ? 'sicher' : r === false ? 'üben' : current ? 'läuft …' : '';
-      var li = document.createElement('li');
-      li.style.cssText = 'display:flex;align-items:center;gap:10px;padding:9px 0;border-top:' + (i ? '1px solid #ebe7e6' : 'none') + ';font-size:14px;font-weight:700;transition:background .3s';
-      li.innerHTML = '<span class="ms' + (r !== undefined ? ' fill' : '') + '" aria-hidden="true" style="font-size:22px;color:' + color + '">' + icon + '</span>' +
-        '<span style="flex-grow:1;color:' + (r === undefined && !current ? '#8a8f89' : '#1b1c1c') + '"></span>' +
-        '<span style="font-size:12px;font-weight:800;color:' + color + '">' + label + '</span>';
-      li.children[1].textContent = q.topic;
-      list.appendChild(li);
-    });
-    var wrong = [];
-    qs.results.forEach(function (r, i) { if (r === false) wrong.push(QUESTIONS[i]); });
-    var tip = $('db-tip'), ti = $('db-tip-i'), tt = $('db-tip-t');
-    if (!done) {
-      tip.style.background = 'var(--soft)'; tip.style.borderColor = 'var(--line)'; ti.style.color = 'var(--slate)';
-      ti.textContent = started ? 'hourglass_top' : 'hourglass_empty';
-      tt.textContent = started ? 'Quiz läuft. Die erste Antwort erscheint gleich hier.' : 'Sobald die erste Antwort kommt, sehen Sie hier, worüber Sie sprechen sollten.';
-    } else if (wrong.length) {
-      tip.style.background = '#fff7e0'; tip.style.borderColor = '#f0d48a'; ti.style.color = '#7a5900';
-      ti.textContent = 'forum';
-      tt.textContent = (wrong.length > 1 ? wrong.length + ' Themen zum Besprechen. ' : '') + wrong[wrong.length - 1].tip;
-    } else {
-      tip.style.background = '#e8f5e9'; tip.style.borderColor = '#a5d6a7'; ti.style.color = 'var(--green)';
-      ti.textContent = 'verified';
-      tt.textContent = finished ? 'Alle Fallen erkannt. Kein Gesprächsbedarf, weiter so!' : 'Bisher alles sicher erkannt. Kein Gesprächsbedarf.';
-    }
-    if (done) {
-      var d = new Date();
-      $('db-last').textContent = 'Letztes Quiz: gerade eben, ' + String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0') + ' Uhr';
-    } else { $('db-last').textContent = 'Letztes Quiz: noch keins'; }
   }
 
   function renderQuestion() {
@@ -840,7 +776,6 @@ table.tbl{width:100%;border-collapse:collapse;font-size:17px}
     $('qz-hint').hidden = true; $('qz-hint-btn').hidden = false; $('qz-fb').hidden = true;
     $('qz-hint-t').textContent = q.hint;
     qs.choice = null;
-    renderDashboard();
   }
 
   function pickAnswer(i) {
@@ -862,7 +797,6 @@ table.tbl{width:100%;border-collapse:collapse;font-size:17px}
     $('qz-fb').hidden = false;
     $('qz-pfill').style.width = ((qs.step + 1) / QUESTIONS.length * 100) + '%';
     $('qz-pbar').setAttribute('aria-valuenow', String(qs.step + 1));
-    renderDashboard();
   }
 
   function startQuiz() {
@@ -883,10 +817,8 @@ table.tbl{width:100%;border-collapse:collapse;font-size:17px}
     $('qz-score').textContent = score + '/' + QUESTIONS.length;
     $('qz-res-t').textContent = res.title; $('qz-res-x').textContent = res.text;
     $('qz-res-t').focus({ preventScroll: true });
-    renderDashboard();
   });
   $('qz-wa').href = 'https://wa.me/?text=' + encodeURIComponent(WA_TEXT);
-  renderDashboard();
 
   route();
 })();
